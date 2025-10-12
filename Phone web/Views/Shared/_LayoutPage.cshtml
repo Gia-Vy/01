@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <link hhref="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Licorice&family=Wavefont:wght@4..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="top">
+            <a href="Index" class="font-logo">Store</a>
+
+
+            <div style="position:relative;padding-right:210px" class="search">
+                <label  for="search" class="lb"><i style="color:white" class="fa fa-search search-icon"></i></label>
+                <input type="text" name="search" id="timkiem" placeholder="Bạn cần tìm gì?"/>
+            </div>
+
+            <div class="nut">
+                <div class="fm-nut">
+                    <a href="Giohang" style=" text-decoration: none;">
+                        <i class="fa-solid fa-cart-shopping" style="color:aliceblue"></i>
+                        <span class="nut-text">Giỏ hàng</span>
+                        <span id="cart-count">0</span>
+                    </a>
+
+                </div>
+
+
+                <div class="fm-nut">
+                    <div class="user-menu">
+                        <a href="#" style=" text-decoration: none;">
+                          <i class="fa-solid fa-user" style="color:aliceblue"></i>
+                            <span class="nut-text">Tài khoản</span>
+                         </a>
+
+                         <div class="dropdown-taikhoan">
+                             <a href="#">Đăng nhập</a>
+                             <a href="#">Đăng ký</a>
+                           
+                         </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="undertop">
+            <a href="Iphone" class="menu">Iphone</a>
+            <a href="Mac" class="menu">Mac</a>
+            <a href="Amthanh" class="menu">Sound</a>
+            <a href="#" class="menu">Camera</a>
+            <div style="padding-left:20px " class="menu-dichvu" >
+                <a href="#" class="menu" >Dịch vụ</a>
+                <div class="dropdown-dichvu">
+                    <a href="#">Thu cũ đổi mới</a>
+                    <a href="#">Trả góp</a>
+                    <a href="#">Microsoft Office</a>
+                    <a href="#">Bảo hành VIP 1</a>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="banner">
+            <img src="~/hinh/ip17.8.jpg" class="fm-banner" />
+            <img src="~/hinh/ip17.7.jpg" class="fm-banner" />
+            <img src="~/hinh/imac1.jpg" class="fm-banner"/>
+            <img src="~/hinh/mac.18.jpg" class="fm-banner"/>
+            <img src="~/hinh/ip17.8.jpg" class="fm-banner" />
+            <img src="~/hinh/ip17.7.jpg" class="fm-banner" />
+            <img src="~/hinh/imac1.jpg" class="fm-banner"/>
+            <img src="~/hinh/mac.18.jpg" class="fm-banner"/>
+           
+        </div>
+
+
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <div class="footer">
+        <div class="address">
+            <address class="address">
+                <b style="font-size:30px">Địa chỉ & Liên lạc</b><br />
+                <p>
+                    <b>Số điện thoại:</b>121212
+                    <br />
+                    <b>Website:</b>store.edu.vn
+                    <br />
+                    <b>Địa chỉ:</b> 245 Nguyễn Thị Minh Khai,Phường Nguyễn Cư Trinh, Quận1
+                    <br />
+                </p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.306893318852!2d106.680700073565!3d10.766798989381368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f18c72dc959%3A0xc80e37c8d1b72fbd!2zMjQ1IE5ndXnhu4VuIFRo4buLIE1pbmggS2hhaSwgUGjGsOG7nW5nIE5ndXnhu4VuIEPGsCBUcmluaCwgUXXhuq1uIDEsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e1!3m2!1svi!2s!4v1759990687831!5m2!1svi!2s"
+                        width="380" height="150" style="border:0;"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </address>
+        </div>
+
+        <div class="footer2">
+            <b style="font-size:30px">Thông tin</b><br />
+            <p class="fm-f2">
+                Giới thiệu<br />
+                Phương thức thanh toán<br />
+                Bảo hành & sửa <br />
+                Check IMEI<br />
+                Tuyển dụng<br />
+                Tra cứu hóa đơn điện tử<br />
+                Đánh giá<br />
+
+            </p>
+        </div>
+        <div class="footer2">
+            <b style="font-size:30px">Chính sách</b><br />
+            <p class="fm-f2">
+                Thu cũ đổi mới<br />
+                Thanh toán<br />
+                Hủy giao dịch<br />
+                Giao hàng<br />
+                Bảo hành<br />
+                Dịch vụ<br />
+                Bảo mật thông tin<br />
+
+            </p>
+        </div>
+
+    </div>
+
+
+    <script>
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById("cart-count").textContent = totalItems;
+        }
+
+        // Cập nhật ngay khi load trang
+        window.addEventListener("DOMContentLoaded", updateCartCount);
+    </script>
+
+
+
+</body>
+
+</html>
