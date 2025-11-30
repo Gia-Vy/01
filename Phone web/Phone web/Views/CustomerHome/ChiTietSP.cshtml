@@ -1,0 +1,375 @@
+﻿@model Phone_web.Models.ProductDetailViewModel
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<style>
+    /* Ép container không bị kéo giãn quá rộng */
+    .detail-container {
+        width: 75% !important; /* nhỏ hơn 85% → 2 khung sát hơn */
+        gap: !important; /* loại bỏ gap hoàn toàn */
+        justify-content: space-between;
+    }
+
+    /* Ép khung trái chiếm ít hơn */
+    .detail-left {
+        flex: 0 0 40% !important; /* 40% trang */
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Ép khung phải chỉ chiếm phần còn lại */
+    .detail-right {
+        flex: 0 0 55% !important; /* 55% trang */
+    }
+
+    /* Ảnh không tạo margin ảo */
+    .detail-left img {
+        display: block;
+        margin: 0 !important;
+    }
+
+
+    /* =============================
+       KHUNG ẢNH – NHƯ TRANG HOME
+       Sang trọng – Bo tròn – Đổ bóng
+    ============================= */
+    .detail-left {
+        flex: 0 0 40% !important;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    /* Khung đẹp chứa ảnh */
+    .detail-image-box {
+        background: #f3f3f3; /* nền xám nhẹ sang kiểu Apple */
+        padding: 20px; /* tạo khoảng thoáng cho ảnh */
+        border-radius: 18px; /* bo tròn mềm */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.10), 0 12px 28px rgba(0,0,0,0.12); /* bóng 2 lớp sang */
+        display: inline-block;
+    }
+
+        /* Ảnh chính */
+        .detail-image-box img {
+            width: 380px !important;
+            max-width: 100%;
+            object-fit: contain;
+            background: white;
+            padding: 10px;
+            border-radius: 14px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.10);
+            transition: 0.35s ease;
+        }
+
+            /* Hiệu ứng hover */
+            .detail-image-box img:hover {
+                transform: scale(1.04);
+                box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+            }
+
+    /* =============================
+       THUMBNAILS
+    ============================= */
+    .thumbs {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+
+        .thumbs img {
+            width: 70px;
+            height: 70px;
+            background: #f2f2f2;
+            padding: 8px;
+            border-radius: 12px;
+            object-fit: contain;
+            cursor: pointer;
+            transition: 0.25s;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+            .thumbs img:hover,
+            .thumbs img.selected {
+                transform: scale(1.08);
+                border: 2px solid #007bff;
+            }
+
+    /* Khối phải */
+    .detail-right {
+        flex: 1.2;
+        min-width: 380px;
+    }
+
+        .detail-right h2 {
+            margin-bottom: 25px;
+            font-size: 38px;
+            font-weight: 700;
+            color: #222;
+        }
+
+    /* Box thông tin */
+    .version-box {
+        border: 1px solid #e4e4e4;
+        padding: 26px 28px;
+        border-radius: 16px;
+        margin-bottom: 25px;
+        background: #fff;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+        font-size: 19px;
+    }
+
+        /* Label */
+        .version-box label {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Select */
+        .version-box select {
+            margin-top: 8px;
+            width: 75%;
+            padding: 12px 14px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: 1px solid #bbb;
+        }
+
+    /* Giá */
+    #price {
+        font-size: 26px;
+        font-weight: 700;
+        color: #c40000;
+    }
+
+    /* Vùng nút — GIỮ NGUYÊN */
+    .version-actions {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .btn {
+        flex: 1;
+        text-align: center;
+        padding: 14px 0 !important;
+        font-size: 18px !important;
+        font-weight: 600;
+        border-radius: 999px !important;
+        border: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: 0.25s;
+    }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+    .btn-primary {
+        background: #007bff;
+    }
+
+    .btn-danger {
+        background: #e63946;
+    }
+
+    /* Responsive */
+    @@media (max-width: 768px) {
+        .detail-container {
+            flex-direction: column;
+            width: 95%;
+        }
+
+        .detail-right {
+            min-width: 100%;
+        }
+
+        .detail-left img {
+            width: 100%;
+            max-width: 360px;
+        }
+    }
+    /* GIỮ 2 KHUNG TRÊN 1 HÀNG */
+    .detail-container {
+        display: flex;
+        flex-wrap: nowrap !important; /* không cho xuống dòng */
+        width: 80% !important; /* nhỏ hơn để đủ chỗ */
+        justify-content: space-between;
+        gap: 15px !important;
+    }
+
+    /* KHUNG TRÁI (ẢNH) – làm nhỏ lại để không đẩy khung phải xuống dòng */
+    .detail-left {
+        flex: 0 0 38% !important; /* chỉ chiếm 38% trang */
+    }
+
+        /* ẢNH nhỏ lại để đủ chỗ cho khung phải đứng cùng hàng */
+        .detail-left img {
+            width: 100% !important;
+            max-width: 360px !important; /* ép nhỏ còn 360px */
+            margin: 0 !important;
+        }
+
+    /* KHUNG PHẢI */
+    .detail-right {
+        flex: 0 0 58% !important; /* chiếm 58% trang */
+        min-width: auto !important; /* bỏ giới hạn 350px */
+    }
+
+    .product-detail-container {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: nowrap; /* BẮT BUỘC để không xuống hàng */
+    }
+    .detail-container,
+    .detail-container *,
+    .detail-description,
+    .detail-description *,
+    .version-box,
+    .version-box * {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+        letter-spacing: 0.2px;
+        color: #1d1d1f;
+    }
+
+
+</style>
+
+
+
+<div class="detail-container">
+
+    <div class="detail-left">
+        <div class="detail-image-box">
+            <img id="mainImg"
+                 src="@Url.Content(Model.ProImage ?? "/images/no-image.png")"
+                 alt="@Model.ProName" />
+        </div>
+
+        <div class="thumbs">
+            @if (Model.Images != null && Model.Images.Any())
+            {
+                foreach (var img in Model.Images)
+                {
+                    <img src="@Url.Content(img)" data-img="@Url.Content(img)" class="thumb" />
+                }
+            }
+        </div>
+    </div>
+
+    <!-- Khối phải: thông tin + lựa chọn -->
+    <div class="detail-right">
+        <h2>@Model.ProName</h2>
+
+        <div class="version-box">
+            <div>
+                <label>Màu:</label>
+                <select id="colorSelect">
+                    <option value="">Chọn màu</option>
+                    @foreach (var color in Model.Versions.Select(v => v.ColorName).Distinct())
+                    {
+                        <option value="@color">@color</option>
+                    }
+                </select>
+            </div>
+
+            <div style="margin-top:10px;">
+                <label>Dung lượng:</label>
+                <select id="dungLuongSelect">
+                    <option value="">Chọn dung lượng</option>
+                </select>
+            </div>
+
+            <div style="margin-top:10px;">
+                Giá: <span id="price">-- VNĐ</span>
+            </div>
+
+            <div style="margin-top:10px;">
+                <div class="version-actions">
+                    <a id="addCartBtn" href="#" class="btn btn-primary" data-id="">
+                        Thêm vào giỏ
+                    </a>
+
+                    @*<a id="buyNowBtn"
+                       href="@Url.Action("thanhtoan", "Cart", new { id = Model.ProID })"
+                       class="btn btn-danger">
+                        Mua ngay
+                    </a>*@
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div> <!-- KẾT THÚC detail-container -->
+<!-- Khối mô tả sản phẩm -->
+<div class="detail-description" style="margin-top: 30px; padding: 20px; border:1px solid #ddd; border-radius:10px; background:#fafafa;">
+    <h3>Thông tin sản phẩm</h3>
+    <p>@(Model.ProDescription ?? "Chưa có mô tả.")</p>
+</div>
+
+<script>
+    const versions = @Html.Raw(Json.Encode(Model.Versions));
+    const colorSelect = document.getElementById("colorSelect");
+    const dungLuongSelect = document.getElementById("dungLuongSelect");
+    const priceSpan = document.getElementById("price");
+    const addCartBtn = document.getElementById("addCartBtn");
+    const buyNowBtn = document.getElementById("buyNowBtn");
+
+    // Khi chọn màu
+    colorSelect.addEventListener("change", function(){
+        const selectedColor = this.value;
+        const filtered = versions.filter(v => v.ColorName === selectedColor);
+
+        dungLuongSelect.innerHTML = '<option value="">Chọn dung lượng</option>';
+        filtered.forEach(v => {
+            const opt = document.createElement("option");
+            opt.value = v.ProDeID;
+            opt.text = v.DungLuongName;
+            dungLuongSelect.add(opt);
+        });
+
+        priceSpan.textContent = "-- VNĐ";
+        addCartBtn.href = "#";
+        buyNowBtn.href = "#";
+    });
+
+    // Khi chọn dung lượng
+    dungLuongSelect.addEventListener("change", function () {
+        const id = parseInt(this.value);
+        const selected = versions.find(v => v.ProDeID === id);
+
+        if (selected) {
+            priceSpan.textContent = selected.Price.toLocaleString() + " VNĐ";
+            addCartBtn.setAttribute("data-id", selected.ProDeID);
+            buyNowBtn.href = '/Payments/Index?id=' + selected.ProDeID;
+        }
+    });
+    addCartBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const id = this.getAttribute("data-id");
+        if (!id) return alert("Vui lòng chọn màu và dung lượng!");
+
+        fetch('/Cart/AddToCart', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: parseInt(id) })
+        })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("cart-count").textContent = data.count;
+                alert("Đã thêm sản phẩm vào giỏ!");
+            })
+            .catch(err => console.error(err));
+    });
+</script>
+

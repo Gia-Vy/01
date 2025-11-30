@@ -1,0 +1,111 @@
+﻿@model List<Phone_web.Models.Product>
+
+@{
+    ViewBag.Title = "Kết quả tìm kiếm";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+<style>
+    /* Tiêu đề category */
+    .tt {
+        font-size: 36px;
+        text-align: center; /* căn giữa */
+        margin: 30px 0 20px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Container sản phẩm */
+    .body {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* dàn đều trung tâm */
+        gap: 20px; /* khoảng cách giữa các item */
+        margin-bottom: 50px;
+    }
+
+    /* Item sản phẩm */
+    .in {
+        flex: 0 0 calc(25% - 20px); /* mỗi hàng 4 sản phẩm - trừ gap */
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+    }
+
+        /* Ảnh sản phẩm */
+        .in img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+    /* Tên sản phẩm */
+    .body-text {
+        margin-top: 10px;
+        font-size: 16px;
+        color: #333;
+        text-align: center;
+        min-height: 40px;
+    }
+
+    /* Giá sản phẩm */
+    .price {
+        color: #e74c3c;
+        font-weight: bold;
+        margin-top: 5px;
+        font-size: 16px;
+    }
+
+    /* Responsive: màn hình nhỏ */
+    @@media (max-width: 1200px) {
+        .in {
+            flex: 0 0 calc(33.33% - 20px); /* 3 sản phẩm / hàng */
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .in {
+            flex: 0 0 calc(50% - 20px); /* 2 sản phẩm / hàng */
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .in {
+            flex: 0 0 100%; /* 1 sản phẩm / hàng */
+        }
+
+            .in img {
+                width: 100%;
+                height: auto;
+            }
+    }
+</style>
+<h2>Kết quả cho: @Request["keyword"]</h2>
+
+@if (Model.Count == 0)
+{
+    <p>Không tìm thấy sản phẩm nào.</p>
+}
+else
+{
+    <div class="body">
+        @foreach (var product in Model)
+        {
+            var price = product.ProductDetails.FirstOrDefault()?.Price ?? 0;
+            var imagePath = Url.Content(product.ProImage ?? "/images/no-image.png");
+            <div class="in">
+                <a href="@Url.Action("ChiTietSP", "CustomerHome", new { id = product.ProID })">
+                    <img src="@imagePath" alt="@product.ProName" />
+                    <p class="body-text">@product.ProName</p>
+                    <p class="price">@price.ToString("N0") VNĐ</p>
+                </a>
+            </div>
+        }
+    </div>
+}

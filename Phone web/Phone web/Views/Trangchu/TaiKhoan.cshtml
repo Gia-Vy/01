@@ -1,0 +1,366 @@
+﻿
+@{
+    ViewBag.Title = "TaiKhoan";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tài khoản của tôi</title>
+
+</head>
+<body>
+
+    <div class="account-wrapper">
+        <h2>Tài khoản của tôi</h2>
+
+        <div class="account-info">
+            <p><strong>Tên đăng nhập:</strong> @Model.UserName</p>
+            <p><strong>Email:</strong> @Model.Email</p>
+            <p><strong>Quyền:</strong> @Model.Role</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Địa chỉ -->
+    <div id="address" class="tab-content">
+        <h2>Địa chỉ nhận hàng</h2>
+        @using (Html.BeginForm("UpdateAddress", "CustomerHome", FormMethod.Post))
+        {
+            <input type="text" name="Address" class="form-control" placeholder="Nhập địa chỉ giao hàng..." />
+            <button type="submit" class="btn btn-primary">Xác nhận địa chỉ</button>
+            <div id="addressMsg">@ViewBag.AddressMsg</div>
+        }
+    </div>
+
+    <!-- Đơn hàng -->
+    <div id="orders" class="tab-content">
+        <h2>Đơn đặt hàng</h2>
+        @if (Model.Orders != null && Model.Orders.Any())
+        {
+            <ul>
+                @foreach (var order in Model.Orders)
+                {
+                    <li>Đơn hàng #@order.OrderID - Ngày: @order.OrderDate.ToString("dd/MM/yyyy")</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Chưa có đơn hàng nào.</p>
+        }
+    </div>
+
+
+</body>
+</html>
+
+<script>
+    // Script đổi tab
+    document.querySelectorAll(".menu-item").forEach(item => {
+        item.addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelectorAll(".menu-item").forEach(m => m.classList.remove("active"));
+            document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+
+            this.classList.add("active");
+            document.getElementById(this.dataset.tab).classList.add("active");
+        });
+    });
+
+    // ======= Chuyển tab =======
+    const menuItems = document.querySelectorAll('.menu-item');
+    const tabs = document.querySelectorAll('.tab-content');
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', e => {
+            e.preventDefault();
+            menuItems.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            const tab = item.getAttribute('data-tab');
+            tabs.forEach(t => {
+                t.classList.remove('active');
+                if (t.id === tab) t.classList.add('active');
+            });
+
+            // Nếu mở tab "orders", refresh danh sách đơn
+            if (tab === 'orders') renderOrders();
+        });
+    });
+
+    // ======= Thông tin user =======
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const phoneInput = document.getElementById("phone");
+    const genderInput = document.getElementById("gender");
+    const msg = document.getElementById("msg");
+
+    document.getElementById("saveBtn").addEventListener("click", () => {
+        const userData = {
+            name: nameInput.value,
+            email: emailInput.value,
+            phone: phoneInput.value,
+            gender: genderInput.value
+        };
+        localStorage.setItem("userInfo", JSON.stringify(userData));
+        msg.textContent = "✅ Đã lưu thông tin thành công!";
+        setTimeout(() => (msg.textContent = ""), 2500);
+    });
+
+    // ======= Địa chỉ giao hàng =======
+    const addressSection = document.getElementById("addressContent");
+
+    function showSavedAddress(address) {
+        addressSection.innerHTML = `
+          <h2>Địa chỉ nhận hàng</h2>
+          <p style="font-size:18px; color:green;">
+            Đã lưu địa chỉ nhận hàng!<br>
+            <strong>Địa chỉ của bạn là:</strong> ${address}
+          </p>
+          <button id="editAddress" style="
+            background-color:#2a5bd7;
+            color:white;
+            border:none;
+            padding:10px 20px;
+            border-radius:10px;
+            cursor:pointer;
+            font-size:16px;">
+            ✏️ Sửa địa chỉ
+          </button>
+        `;
+
+        document.getElementById("editAddress").addEventListener("click", () => {
+            setupAddressHandlers(address);
+        });
+    }
+
+    function setupAddressHandlers(currentAddress = "") {
+        addressSection.innerHTML = `
+          <h2>Địa chỉ nhận hàng</h2>
+          <input type="text" id="userAddress" placeholder="Nhập địa chỉ giao hàng..." value="${currentAddress}">
+          <button id="saveAddress">Xác nhận địa chỉ</button>
+          <div id="addressMsg"></div>
+        `;
+        const input = document.getElementById("userAddress");
+        const button = document.getElementById("saveAddress");
+        const msg = document.getElementById("addressMsg");
+
+        button.addEventListener("click", () => {
+            const address = input.value.trim();
+            if (!address) {
+                msg.textContent = "⚠️ Vui lòng nhập địa chỉ!";
+                msg.style.color = "red";
+                return;
+            }
+            localStorage.setItem("userAddress", address);
+            showSavedAddress(address);
+        });
+    }
+
+    // ======= Khi tải trang =======
+    window.addEventListener("load", () => {
+        // Thông tin user
+        const savedUser = JSON.parse(localStorage.getItem("userInfo"));
+        if (savedUser) {
+            nameInput.value = savedUser.name || "";
+            emailInput.value = savedUser.email || "";
+            phoneInput.value = savedUser.phone || "";
+            genderInput.value = savedUser.gender || "Nam";
+        }
+
+        // Địa chỉ
+        const savedAddress = localStorage.getItem("userAddress");
+        if (savedAddress) {
+            showSavedAddress(savedAddress);
+        } else {
+            setupAddressHandlers();
+        }
+
+        // Lịch sử đơn hàng
+        renderOrders();
+    });
+
+
+
+
+</script>
+
+<style>
+    .TaiKhoan-body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f5ff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .TaiKhoan-wrapper {
+        display: flex;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+        width: 900px;
+        height: 550px;
+    }
+    /*khung sườn bên trái*/
+    .sidebar {
+        width: 250px;
+        background-color: #2a5bd7;
+        color: white;
+        padding: 20px;
+        margin: 40px auto;
+        max-width: 1200px;
+    }
+
+        .sidebar h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+        }
+
+    .menu-item {
+        display: block;
+        padding: 12px;
+        margin: 8px 0;
+        border-radius: 10px;
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+        margin: 10px;
+        max-width: 1200px;
+    }
+
+        .menu-item:hover,
+        .menu-item.active {
+            background-color: #1c46b0;
+        }
+    /* Nội dung bên phải */
+    .content {
+        flex: 1;
+        padding: 20px;
+        background-color: #f9faff;
+        margin: 40px auto;
+        max-width: 1200px;
+        font-size: 28px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+        .content h2 {
+            color: #2a5bd7;
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 12px;
+        color: #333;
+    }
+
+    input, select {
+        width: 95%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 25px;
+        margin: 0 auto;
+    }
+
+    button {
+        background-color: #2a5bd7;
+        color: white;
+        border: none;
+        padding: 18px 40px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 12px auto;
+        font-size: 26px;
+    }
+
+        button:hover {
+            background-color: #1c46b0;
+        }
+
+    .tab-content {
+        display: none;
+    }
+
+        .tab-content.active {
+            display: block;
+        }
+
+    .message {
+        color: green;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    banner, marquee {
+        display: none;
+    }
+    /* 🌸 Phần Địa chỉ giao hàng */
+    #address {
+        padding: 20px;
+        background-color: #f9faff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+        #address h2 {
+            color: #2a5bd7;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+    #userAddress {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 16px;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+
+        #userAddress:focus {
+            border-color: #2a5bd7;
+        }
+
+    #saveAddress {
+        background-color: #2a5bd7;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 15px;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+
+        #saveAddress:hover {
+            background-color: #1c46b0;
+            transform: scale(1.03);
+        }
+
+    #addressMsg {
+        color: green;
+        margin-top: 10px;
+        font-size: 15px;
+    }
+</style>
+
+

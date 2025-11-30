@@ -1,0 +1,248 @@
+﻿@model Phone_web.Models.ProductDetailViewModel
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<style>
+    /* Container chính */
+    .detail-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin: 30px 0;
+    }
+
+    /* Ảnh sản phẩm */
+    .detail-left {
+        flex: 1;
+        min-width: 300px;
+    }
+
+        .detail-left img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+    .thumbs {
+        display: flex;
+        gap: 10px;
+    }
+
+        .thumbs img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+        }
+
+            .thumbs img.selected {
+                border: 2px solid #007bff;
+            }
+
+    /* SECTION THÔNG TIN */
+    .detail-right {
+        flex: 2;
+        min-width: 300px;
+    }
+
+        .detail-right h2 {
+            margin-bottom: 15px;
+            font-size: 26px;
+            color: #333;
+        }
+
+    /* Box phiên bản */
+    .version-box {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        background: #fafafa;
+    }
+
+    .version-line {
+        margin-bottom: 6px;
+        font-size: 15px;
+    }
+
+    .version-label {
+        font-weight: bold;
+        color: #666;
+    }
+
+    .version-value {
+        color: #202020;
+        font-weight: 500;
+    }
+
+    .version-actions {
+        margin-top: 10px;
+    }
+
+    .btn {
+        padding: 8px 14px;
+        border-radius: 6px;
+        color: white;
+        text-decoration: none;
+        margin-right: 5px;
+        display: inline-block;
+    }
+
+    .btn-primary {
+        background: #007bff;
+    }
+
+    .btn-danger {
+        background: #dc3545;
+    }
+
+    .btn:hover {
+        opacity: 0.85;
+    }
+
+    /* Responsive */
+    @@media (max-width: 768px) {
+        .detail-container {
+            flex-direction: column;
+        }
+
+        .detail-left, .detail-right {
+            min-width: 100%;
+        }
+    }
+</style>
+
+
+
+<div class="detail-container">
+
+    <!-- Khối trái: Ảnh sản phẩm -->
+    <div class="detail-left">
+        <img id="mainImg" src="@Url.Content(Model.ProImage ?? "/images/no-image.png")" alt="@Model.ProName" />
+
+        <div class="thumbs">
+            @if (Model.Images != null && Model.Images.Any())
+            {
+                foreach (var img in Model.Images)
+                {
+                    <img src="@Url.Content(img)"
+                         data-img="@Url.Content(img)"
+                         class="thumb" />
+                }
+            }
+        </div>
+    </div>
+
+    <!-- Khối phải: thông tin + lựa chọn -->
+    <div class="detail-right">
+        <h2>@Model.ProName</h2>
+
+        <div class="version-box">
+            <div>
+                <label>Màu:</label>
+                <select id="colorSelect">
+                    <option value="">Chọn màu</option>
+                    @foreach (var color in Model.Versions.Select(v => v.ColorName).Distinct())
+                    {
+                        <option value="@color">@color</option>
+                    }
+                </select>
+            </div>
+
+            <div style="margin-top:10px;">
+                <label>Dung lượng:</label>
+                <select id="dungLuongSelect">
+                    <option value="">Chọn dung lượng</option>
+                </select>
+            </div>
+
+            <div style="margin-top:10px;">
+                Giá: <span id="price">-- VNĐ</span>
+            </div>
+
+            <div style="margin-top:10px;">
+                <a id="addCartBtn" href="#" class="btn btn-primary" data-id="">
+                    Thêm vào giỏ
+                </a>
+
+                <a id="buyNowBtn"
+                   href="@Url.Action("Index", "Payments", new { id = Model.ProID })"
+                   class="btn btn-danger">
+                    Mua ngay
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Khối mô tả sản phẩm -->
+<div class="detail-description" style="margin-top: 30px; padding: 20px; border:1px solid #ddd; border-radius:10px; background:#fafafa;">
+    <h3>Thông tin sản phẩm</h3>
+    <p>@(Model.ProDescription ?? "Chưa có mô tả.")</p>
+</div>
+
+<script>
+    const versions = @Html.Raw(Json.Encode(Model.Versions));
+    const colorSelect = document.getElementById("colorSelect");
+    const dungLuongSelect = document.getElementById("dungLuongSelect");
+    const priceSpan = document.getElementById("price");
+    const addCartBtn = document.getElementById("addCartBtn");
+    const buyNowBtn = document.getElementById("buyNowBtn");
+
+    // Khi chọn màu
+    colorSelect.addEventListener("change", function(){
+        const selectedColor = this.value;
+        const filtered = versions.filter(v => v.ColorName === selectedColor);
+
+        dungLuongSelect.innerHTML = '<option value="">Chọn dung lượng</option>';
+        filtered.forEach(v => {
+            const opt = document.createElement("option");
+            opt.value = v.ProDeID;
+            opt.text = v.DungLuongName;
+            dungLuongSelect.add(opt);
+        });
+
+        priceSpan.textContent = "-- VNĐ";
+        addCartBtn.href = "#";
+        buyNowBtn.href = "#";
+    });
+
+    // Khi chọn dung lượng
+    dungLuongSelect.addEventListener("change", function () {
+        const id = parseInt(this.value);
+        const selected = versions.find(v => v.ProDeID === id);
+
+        if (selected) {
+            priceSpan.textContent = selected.Price.toLocaleString() + " VNĐ";
+            addCartBtn.setAttribute("data-id", selected.ProDeID);
+            buyNowBtn.href = '/Payments/Index?id=' + selected.ProDeID;
+        }
+    });
+    addCartBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const id = this.getAttribute("data-id");
+        if (!id) return alert("Vui lòng chọn màu và dung lượng!");
+
+        fetch('/Cart/AddToCart', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: parseInt(id) })
+        })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("cart-count").textContent = data.count;
+                alert("Đã thêm sản phẩm vào giỏ!");
+            })
+            .catch(err => console.error(err));
+    });
+</script>
+

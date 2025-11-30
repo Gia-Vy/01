@@ -1,0 +1,132 @@
+﻿@model Phone_web.Models.ViewModel.LoginVM
+
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<style>
+    body {
+        background: #f0f2f5;
+        font-family: Arial, sans-serif;
+    }
+
+    .khoiA {
+        width: 450px;
+        margin: 60px auto;
+        background: #ffffff;
+        padding: 35px 40px; 
+        border-radius: 12px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+        border: 1px solid #e6e6e6;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-weight: bold;
+        color: #222;
+    }
+
+    .nhomA {
+        margin-bottom: 18px;
+    }
+
+    .control-label {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 6px;
+        color: #333;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border-radius: 6px;
+        border: 1px solid #cfcfcf;
+        background: #fafafa;
+        outline: none;
+        transition: 0.25s;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            background: #fff;
+            box-shadow: 0 0 8px rgba(0,123,255,0.25);
+        }
+
+    .nutDangNhap {
+        width: 25%;
+        padding: 12px;
+        background: #007bff;
+        border: none;
+        color: #fff;
+        border-radius: 8px;
+        font-size: 17px;
+        font-weight: 600;
+        transition: 0.25s;
+        margin-top: 8px;
+        display: block;
+        margin: 20px auto;
+    }
+
+        .nutDangNhap:hover {
+            background: #0066d2;
+            cursor: pointer;
+        }
+
+    .lknguoc {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 14px;
+        color: #555;
+    }
+
+        .lknguoc a {
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            .lknguoc a:hover {
+                text-decoration: underline;
+            }
+
+    .text-danger {
+        font-size: 13px;
+    }
+</style>
+
+
+<div class="khoiA">
+
+    @using (Html.BeginForm("Login", "Users", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <h2>Đăng nhập</h2>
+
+        <!-- USERNAME -->
+        <div class="nhomA">
+            @Html.LabelFor(m => m.Username, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="nhomA">
+            @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+
+        <!-- BUTTON -->
+        <button type="submit" class="nutDangNhap">Đăng nhập</button>
+
+        <p class="lknguoc">
+            Bạn chưa có tài khoản?
+            <a href="@Url.Action("Register", "Users")">Đăng ký ngay</a>
+        </p>
+    }
+</div>

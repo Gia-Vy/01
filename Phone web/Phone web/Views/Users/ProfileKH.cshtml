@@ -1,0 +1,124 @@
+﻿@model Phone_web.Models.Customer
+
+@{
+    ViewBag.Title = "Tài khoản";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+<style>
+    .account-container {
+        display: flex;
+        max-width: 1000px;
+        margin: 30px auto;
+        background: #E8E8E8;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        overflow: hidden;
+        font-family: "Segoe UI", sans-serif;
+
+    }
+
+    /* khungTrai */
+    .khungTrai {
+        width: 220px;
+        background: #B0B0B0;
+        color: #fff;
+        padding: 20px 0;
+        
+    }
+
+        .khungTrai ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .khungTrai li {
+            margin: 0;
+        }
+
+        .khungTrai a {
+            display: block;
+            padding: 12px 20px;
+            color: black;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-weight: bold;
+            
+        }
+
+            .khungTrai a:hover,
+            .khungTrai a.active {
+                background: #3498db;
+                color: #fff;
+            }
+
+    /* khungPhai */
+    .khungPhai {
+        flex: 1;
+        padding: 30px;
+        /*background: #BEBEBE;*/
+    }
+
+    .tab-khungPhai {
+        display: none;
+    }
+
+        .tab-khungPhai.active {
+            display: block;
+        }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .table th {
+            background: #f4f6f8;
+        }
+</style>
+<div class="account-container">
+    <!-- khungTrai -->
+    <div class="khungTrai">
+        <ul>
+            <li><a href="#info" class="active">Thông tin tài khoản</a></li>
+            <li><a href="@Url.Action("lichsudonhang","Cart")">Lịch sử mua hàng</a></li>
+            <li><a href="@Url.Action("Logout","Users")">Đăng xuất</a></li>
+        </ul>
+    </div>
+
+    <!-- khungPhai -->
+    <div class="khungPhai">
+        <!-- Thông tin -->
+        <div id="info" class="tab-khungPhai active">
+            <h3>Thông tin tài khoản</h3>
+            <p><b>Họ tên:</b> @Model.CusName</p>
+            <p><b>Email:</b> @Model.CusEmail</p>
+            <p><b>Số điện thoại:</b> @Model.CusPhone</p>
+            <p><b>Đăng nhập gần nhất:</b> @(Model.LastLogin?.ToString("dd/MM/yyyy HH:mm") ?? "Chưa có")</p>
+            <a href="@Url.Action("EditProfile","Users")" class="btn btn-primary">Chỉnh sửa</a>
+        </div>
+
+        
+    </div>
+</div>
+<script>document.querySelectorAll('.khungTrai a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (this.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                // remove active
+                document.querySelectorAll('.khungTrai a').forEach(a => a.classList.remove('active'));
+                document.querySelectorAll('.tab-khungPhai').forEach(tab => tab.classList.remove('active'));
+                // add active
+                this.classList.add('active');
+                const target = this.getAttribute('href');
+                document.querySelector(target).classList.add('active');
+            }
+        });
+    });</script>

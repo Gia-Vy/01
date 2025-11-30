@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Giohang";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="giohang">
+    <h1 class="chu-spdexuat" style="width:260px">GIỎ HÀNG</h1>
+    <div class="sp-giohang" id="cart-list">
+
+    </div>
+    <div class="thanhtoan" id="checkout-form">
+      
+    </div>
+
+
+    <script>
+        // Lấy dữ liệu giỏ hàng từ localStorage
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let list = document.getElementById("cart-list");
+        let form = document.getElementById("checkout-form");
+
+        // Nếu trống thì báo
+        if (cart.length === 0) {
+            list.innerHTML = "<p>Chưa có sản phẩm nào trong giỏ 🐼</p>";
+            form.innerHTML = "";
+        } else { // Hiển thị sản phẩm
+            let html = "";
+            let total = 0;
+            cart.forEach((item, index) => {
+                let qty = item.qty || 1; // nếu chưa có qty thì mặc định = 1
+                let itemTotal = item.price * qty;
+                total += itemTotal;
+                html += `
+
+                          <div class="item">
+                              <div> <img src="${item.img}" alt="${item.name}" ></div>
+
+                              <div ><p class="text-in-spthanhtoan">${item.name} ${item.gb || ""}</p>  </div>
+
+                              <div><p class="text-in-spthanhtoan" > ${item.price.toLocaleString()}đ</p> </div>
+
+                               <div class="soluong">
+                                  <button  onclick="changeQty(${index}, -1)"><i class="fa-solid fa-minus"></i></button>
+                                   <input  id="qty-${index}" type="number" value="${qty}" min="1" readonly>
+                                   <button  onclick="changeQty(${index}, 1)"><i class="fa-solid fa-plus"></i></button>
+
+                               </div>
+
+                               <button class="btn-x"  onclick="removeItem(${index})">X</button>
+
+                         </div>
+                       `;
+            });
+            list.innerHTML = html;
+
+            // Form thanh toán
+            form.innerHTML = `
+          
+                    <p style="font-size:30px"><b>CHI TIẾT GIỎ HÀNG</b>  <i class="fa-solid fa-cart-shopping"></i></p>
+                   <p><b>Tổng tiền hàng:</b> ${total.toLocaleString()}đ</p>
+                   <p style="color:red"><b>Giảm giá: </b> 0đ</p>
+                   <hr>
+                   <p><b>Tổng tiền:</b> ${total.toLocaleString()}đ</p>
+                   <a style="text-decoration:none" href="Checkout">
+                  <button class="btn"  onclick="checkout()"><b>XÁC NHẬN THANH TOÁN</b></button>
+                  </a>
+          
+             `;
+        }
+
+
+        // Thanh toán
+        function checkout() {
+            alert("Cảm ơn bạn đã thanh toán 💖");
+            localStorage.removeItem("cart");
+            location.reload();
+        }
+        // Xóa sản phẩm khỏi giỏ
+        function removeItem(i) {
+            cart.splice(i, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            location.reload();
+        }
+       
+        // ➕➖ Thay đổi số lượng
+        function changeQty(index, delta) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            if (!cart[index].qty) cart[index].qty = 1;
+            cart[index].qty += delta;
+
+            if (cart[index].qty < 1) cart[index].qty = 1;
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCart(); // cập nhật giao diện mà không cần reload
+        }
+
+        function changeQty(index, delta) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            if (!cart[index].qty) cart[index].qty = 1;
+            cart[index].qty += delta;
+            if (cart[index].qty < 1) cart[index].qty = 1;
+            localStorage.setItem("cart", JSON.stringify(cart));
+            location.reload();
+        }
+        updateCartCount();
+
+    </script>
+
+</div>
+

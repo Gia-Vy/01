@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Phone_web.Models.Category>
+
+@{
+    ViewBag.Title ="danhmuc";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container ">
+
+
+    <h2 class="title"> DANH MỤC </h2>
+
+    <table class="table table-bordered table-hover  align-middle">
+        <thead class="table" style="background-color: #e7f1ff; ">
+            <tr class="text-center">
+
+                <th>Dòng sản phẩm</th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var cate in Model)
+            {
+                <tr>
+
+                    <td class="text-center fw-semibol">@cate.CatName</td>
+
+
+
+                    <td class="text-center">
+                        @Html.ActionLink("✏️ Sửa","Sua", new { id = cate.CatID }, new { @class = "btn btn-warning btn-sm mx-1" })
+                        @Html.ActionLink("🗑️ Xóa","Xoa", new { id = cate.CatID }, new { @class = "btn btn-danger btn-sm mx-1" })
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="text-end mt-3">
+        @Html.ActionLink("➕ Thêm mới","Them", null, new { @class = "btn btn-dark text-white  fw-bold" })
+
+    </div>
+
+</div>
+

@@ -1,0 +1,598 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    
+    <style>
+        .tieude {
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+        }
+        body {
+            background: white;
+            margin: 0;
+            padding: 20px;
+        }
+        .section {
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+            .section h3 {
+                font-size: 28px;
+            }
+        
+
+        h2 {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+      
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .summary {
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .btn {
+            background-color:dodgerblue ;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+          
+        }
+
+            .btn:hover {
+                background-color:crimson;
+            }
+
+        .bank-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .bank-item {
+            width: 100px;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 6px;
+            transition: transform 0.2s;
+        }
+
+            .bank-item:hover {
+                transform: scale(1.05);
+                border-color: #007bff;
+            }
+
+            .bank-item img {
+                width: 60px;
+                height: 60px;
+                object-fit: contain;
+                margin-bottom: 5px;
+            }
+    </style>
+</head>
+<body>
+    <p class="tieude">Trang thanh toán</p>
+    <!-- Thông tin người nhận -->
+    <div class="section">
+        <h3>📦 Thông tin giao hàng</h3>
+        <label>Họ tên:</label>
+        <input type="text" placeholder="Nhập họ và tên">
+        <label>Số điện thoại:</label>
+        <input type="text" placeholder="0123456789">
+    </div>
+
+    <!-- Nội dung HTML ở đây -->
+    <div class="section">
+        <h3>📍 Địa chỉ giao hàng</h3>
+
+        <label>Tỉnh/Thành phố:</label>
+        <select id="province" onchange="loadDistricts()" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+            <option value="">-- Chọn tỉnh/thành phố --</option>
+        </select>
+
+        <label>Quận/Huyện:</label>
+        <select id="district" onchange="loadWards()" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+            <option value="">-- Chọn quận/huyện --</option>
+        </select>
+
+        <label>Phường/Xã:</label>
+        <select id="ward" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+            <option value="">-- Chọn phường/xã --</option>
+        </select>
+
+        <label>Địa chỉ cụ thể:</label>
+        <input type="text" placeholder="Số nhà, tên đường..." style="width: 100%; padding: 8px;">
+
+        <!-- ✅ Nút xuống hàng và nhỏ lại -->
+        <!--<-->@*div style="text-align: left;">
+            <button onclick="confirmAddress()" style="
+                padding: 15px 22px;
+                font-size: 18px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                margin: 10px 0;
+                ">
+                Xác nhận địa chỉ
+            </button>
+        </div>*@
+
+
+        <!-- Đặt JavaScript ở cuối body -->
+
+        <script>
+            // JavaScript của bạn ở đây
+            // Tải danh sách tỉnh/thành
+            async function loadProvinces() {
+                const res = await fetch("https://provinces.open-api.vn/api/?depth=1");
+                const data = await res.json();
+                const provinceSelect = document.getElementById("province");
+
+                data.forEach(province => {
+                    const option = document.createElement("option");
+                    option.value = province.code;
+                    option.textContent = province.name;
+                    provinceSelect.appendChild(option);
+                });
+            }
+
+            // Tải quận/huyện theo tỉnh đã chọn
+            async function loadDistricts() {
+                const provinceCode = document.getElementById("province").value;
+                const districtSelect = document.getElementById("district");
+                districtSelect.innerHTML = '<option value="">--- Chọn quận/huyện ---</option>';
+                document.getElementById("ward").innerHTML = '<option value="">--- Chọn phường/xã ---</option>';
+
+                if (!provinceCode) return;
+
+                const res = await fetch(`https://provinces.open-api.vn/api/p/${provinceCode}?depth=2`);
+                const data = await res.json();
+
+                data.districts.forEach(district => {
+                    const option = document.createElement("option");
+                    option.value = district.code;
+                    option.textContent = district.name;
+                    districtSelect.appendChild(option);
+                });
+            }
+
+            // Tải phường/xã theo quận/huyện đã chọn
+            async function loadWards() {
+                const districtCode = document.getElementById("district").value;
+                const wardSelect = document.getElementById("ward");
+                wardSelect.innerHTML = '<option value="">--- Chọn phường/xã ---</option>';
+
+                if (!districtCode) return;
+
+                const res = await fetch(`https://provinces.open-api.vn/api/d/${districtCode}?depth=2`);
+                const data = await res.json();
+
+                data.wards.forEach(ward => {
+                    const option = document.createElement("option");
+                    option.value = ward.code;
+                    option.textContent = ward.name;
+                    wardSelect.appendChild(option);
+                });
+            }
+            // Gọi khi trang vừa load
+
+            window.onload = loadProvinces;
+
+            async function loadProvinces() {
+                const res = await fetch("https://provinces.open-api.vn/api/?depth=1");
+                const data = await res.json();
+                const provinceSelect = document.getElementById("province");
+
+                data.forEach(province => {
+                    const option = document.createElement("option");
+                    option.value = province.code;
+                    option.textContent = province.name;
+                    provinceSelect.appendChild(option);
+                });
+            }
+        </script>
+
+
+
+
+
+        <!-- Tóm tắt đơn hàng -->
+        <div class="section">
+            <h3>🛒 Tóm tắt đơn hàng</h3>
+            <div class="summary" id="orderSummary"></div>
+        </div>
+
+        <style>
+
+            /* khung từng sản phẩm */
+            .summary .item {
+                display: grid;
+                grid-template-columns: 120px 1.5fr 0.6fr;
+                align-items: center;
+                gap: 10px;
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+                .summary .item img {
+                    width: 100%;
+                    max-width: 120px;
+                    border-radius: 10px;
+                    object-fit: cover;
+                }
+
+                .summary .item p {
+                    margin: 4px 0;
+                    font-size: 18px;
+                }
+                /* bỏ viền dư, chỉ giữ border-bottom nhẹ */
+                .summary .item:last-child {
+                    border-bottom: none;
+                }
+
+            .summary .total {
+                font-size: 20px;
+                margin-top: 10px;
+                text-align: right;
+            }
+        </style>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                let summaryDiv = document.getElementById("orderSummary");
+
+                if (cart.length === 0) {
+                    summaryDiv.innerHTML = "<p>Không có sản phẩm nào trong giỏ hàng 🐼</p>";
+                    return;
+                }
+
+                let total = 0;
+                let html = "";
+
+                cart.forEach(item => {
+                    let qty = item.qty || 1;
+                    let itemTotal = item.price * qty;
+                    total += itemTotal;
+
+                    html += `
+                                            <div class="item">
+                                                <img src="${item.img}" alt="${item.name}">
+                                                <div>
+                                                    <p><b>${item.name}</b> ${item.gb || ""}</p>
+                                                    <p>Số lượng: ${qty}</p>
+                                                </div>
+                                                <div style="text-align:right;">
+                                                    <p>${item.price.toLocaleString()}đ</p>
+                                                    <p><b>${itemTotal.toLocaleString()}đ</b></p>
+                                                </div>
+                                            </div>
+                                        `;
+                });
+
+                html += `
+                                        <div class="total">
+                                            <hr>
+                                            <p><b>Tổng cộng: ${total.toLocaleString()}đ</b></p>
+                                        </div>
+                                    `;
+
+                summaryDiv.innerHTML = html;
+            });
+        </script>
+
+
+
+
+
+
+
+
+
+        <!-- Mã giảm giá -->
+        <div class="section">
+            <h3>🎁 Mã giảm giá & Voucher của shop</h3>
+            <label>Mã giảm giá:</label>
+            <input type="text" placeholder="Nhập mã khuyến mãi">
+            <div style="margin-top: 10px;">
+                <label style="display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+                    <input type="checkbox" id="rewardCard" onclick="toggleRewardInput()" style="margin: 0;">
+                    <span>Sử dụng thẻ tích điểm</span>
+                </label>
+            </div>
+
+            <!-- Ô nhập mã thẻ tích điểm (ẩn ban đầu) -->
+            <div id="rewardInput" style="margin-top: 10px; display: none;">
+                <label for="rewardCode" style="font-weight: bold;">Nhập mã thẻ tích điểm của bạn:</label>
+                <input type="text" id="rewardCode" placeholder="Nhập số điện thoại" style="width: 100%; padding: 8px; margin-top: 5px;">
+            </div>
+
+            <script>
+                function toggleRewardInput() {
+                    const checkbox = document.getElementById("rewardCard");
+                    const inputBox = document.getElementById("rewardInput");
+                    inputBox.style.display = checkbox.checked ? "block" : "none";
+                }
+            </script>
+        </div>
+
+        <!-- Giao hàng -->
+        <div class="section">
+            <h3>🚚 Phương thức giao hàng</h3>
+            <select>
+                <option>Giao hàng nhanh (27 - 29 Th10) - Miễn phí</option>
+                <option>Giao tiết kiệm (3 - 5 ngày) - 15.000đ</option>
+            </select>
+        </div>
+        <!-- Chọn phương thức thanh toán -->
+        <div style="margin-top: 20px;">
+            <label style="display: inline-flex; align-items: center; gap: 8px; margin-right: 20px;">
+                <input type="radio" name="payment" value="visa" onclick="showPaymentForm('visa')" style="margin: 0;">
+                <span>Thẻ Visa</span>
+            </label>
+
+            <label style="display: inline-flex; align-items: center; gap: 8px;">
+                <input type="radio" name="payment" value="bank" onclick="showPaymentForm('bank')" style="margin: 0;">
+                <span>Chuyển khoản ngân hàng</span>
+            </label>
+        </div>
+
+        <!-- Form Visa -->
+        <div id="visaForm" style="display: none; margin-top: 15px;">
+            <label>Số thẻ:</label>
+            <input type="text" placeholder="1234 5678 9012 3456" style="width: 100%; padding: 8px;">
+            <label>Tên chủ thẻ:</label>
+            <input type="text" placeholder="Nguyễn Văn A" style="width: 100%; padding: 8px;">
+            <label>Ngày hết hạn:</label>
+            <input type="text" placeholder="MM/YY" style="width: 100%; padding: 8px;">
+            <label>CVV:</label>
+            <input type="text" placeholder="123" style="width: 100%; padding: 8px;">
+
+            <!-- Nút xác nhận và hủy -->
+            <div style="margin-top: 15px;">
+                <button onclick="confirmPayment('visa')" style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 6px; margin-right: 10px">Xác nhận Visa</button>
+                <button onclick="cancelPayment()" style="padding: 10px 20px; background: #dc3545; color: white; border: none; border-radius: 6px;">Hủy</button>
+            </div>
+        </div>
+
+        <!-- Form Ngân hàng -->
+        <div id="bankForm" style="display: none; margin-top: 15px;">
+            <label style=" display: block; margin: 20px  15px; font-weight:bold">Chọn ngân hàng:</label>
+            <select style="width: 100%; padding: 8px;">
+                <option>Vietcombank</option>
+                <option>Techcombank</option>
+                <option>VpBank</option>
+                <option>BIDV</option>
+                <option>VietinBank</option>
+                <option>Agribank</option>
+                <option>ACB</option>
+                <option>SHB</option>
+                <option>SeABank</option>
+                <option>VIB</option>
+                <option>TPBank</option>
+                <option>MSB</option>
+                <option>VBSP</option>
+                <option>OCB</option>
+                <option>Sacombank</option>
+                <option>SCB</option>
+                <option>VDV</option>
+                <option>Nam A Bank</option><
+            </select>
+            <label>Số tài khoản:</label>
+            <input type="text" placeholder="0123456789" style="width: 100%; padding: 8px;">
+            <label>Chủ tài khoản:</label>
+            <input type="text" placeholder="Nguyễn Văn B" style="width: 100%; padding: 8px;">
+            <!-- Nút xác nhận và hủy -->
+            <div style="margin-top: 15px;">
+                <button onclick="confirmPayment('bank')" style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 6px; margin-right: 10px;">Xác nhận ngân hàng</button>
+                <button onclick="cancelPayment()" style="padding: 10px 20px; background: #dc3545; color: white; border: none; border-radius: 6px;">Hủy</button>
+            </div>
+        </div>
+        <script>
+            function showPaymentForm(method) {
+                document.getElementById("visaForm").style.display = method === "visa" ? "block" : "none";
+                document.getElementById("bankForm").style.display = method === "bank" ? "block" : "none";
+            }
+            function confirmPayment(method) {
+                alert("Bạn đã xác nhận thanh toán bằng " + (method === "visa" ? "Thẻ Visa" : "Chuyển khoản ngân hàng"));
+                // Tại đây bạn có thể xử lý gửi dữ liệu lên server
+            }
+            function cancelPayment() {
+                document.getElementById("visaForm").style.display = "none";
+                document.getElementById("bankForm").style.display = "none";
+                document.querySelectorAll('input[name="payment"]').forEach(el => el.checked = false);
+            }
+        </script>
+        <!-- Tổng kết thanh toán -->
+        <div class="section">
+            <h3>💰 Chi Tiết Thanh Toán</h3>
+            <div class="summary">
+                <p><b>Tổng tiền hàng: <span id="totalItems">0</span> đ</b></p>
+                <p>Giảm giá: <span id="discount">0</span> đ</p>
+                <p>Phí vận chuyển: <span id="shipping">0</span> đ</p>
+                <hr>
+                <div class="total-line">
+                    <strong>Tổng thanh toán: </strong>
+                    <p><span class="grand-total">0</span><b>đ</b></p>
+                </div>
+            </div>
+        </div>
+        <style>
+            .total-line {
+                font-size: 20px;
+                margin-top: 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .grand-total {
+                font-weight: bold;
+                font-size: 22px;
+            }
+        </style>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                // Nếu giỏ trống thì hiển thị 0
+                if (cart.length === 0) {
+                    document.getElementById("totalItems").innerText = "0";
+                    document.querySelector(".grand-total").innerText = "0";
+                    return;
+                }
+                // Tính tổng tiền hàng
+                let total = 0;
+                cart.forEach(item => {
+                    let qty = item.qty || 1;
+                    total += item.price * qty;
+                });
+
+                // Giảm giá & phí ship (bé có thể tự chỉnh)
+                let discount = 0;
+                let shipping = total > 10000000 ? 0 : 30000; // ví dụ: miễn phí ship nếu >10tr
+
+                // Tổng thanh toán
+                let grandTotal = total - discount + shipping;
+
+                // Gán giá trị ra HTML
+                document.getElementById("totalItems").innerText = total.toLocaleString();
+                document.getElementById("discount").innerText = discount.toLocaleString();
+                document.getElementById("shipping").innerText = shipping.toLocaleString();
+                document.querySelector(".grand-total").innerText = grandTotal.toLocaleString();
+            });
+        </script>
+
+
+
+
+
+        <!-- Nút xác nhận thanh toán -->
+        <button id="btnConfirmPayment" class="btn ">XÁC NHẬN THANH TOÁN</button>
+
+        <script>
+            document.getElementById("btnConfirmPayment").addEventListener("click", function () {
+                // Lấy giỏ hàng từ localStorage
+                const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                if (cart.length === 0) {
+                    alert("🛒 Giỏ hàng đang trống, không thể thanh toán!");
+                    return;
+                }
+
+                // Lưu thông tin đơn hàng vào localStorage
+                const orderStatus = {
+                    status: "Đã xác nhận thanh toán",
+                    steps: [
+                        "Đã đặt hàng",
+                        "Đã xác nhận thanh toán",
+                        "Chờ lấy hàng",
+                        "Đang giao",
+                        "Đã giao"
+                    ],
+                    cart: cart,
+                    time: new Date().toLocaleString()
+                };
+
+                localStorage.setItem("orderStatus", JSON.stringify(orderStatus));
+
+                // Xóa giỏ hàng cũ
+                localStorage.removeItem("cart");
+
+                // Thông báo và chuyển sang trang vận chuyển
+                alert("✅ Đơn hàng đã được thanh toán! Chuyển sang trang vận chuyển...");
+                window.location.href = "Shipping"; // Razor route
+                
+
+            });
+        </script>
+        <script>
+            document.getElementById("btnConfirmPayment").addEventListener("click", function () {
+                // 1. Lấy giỏ hàng hiện tại (giả sử đã lưu localStorage key "cart")
+                const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                if (cart.length === 0) {
+                    alert("Giỏ hàng trống, không thể thanh toán!");
+                    return;
+                }
+
+                // 2. Tính tổng tiền
+                const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+                // 3. Tạo đối tượng đơn hàng
+                const order = {
+                    id: Date.now(),              // mã đơn duy nhất
+                    items: cart,                 // danh sách sản phẩm
+                    total: total,                // tổng tiền
+                    date: new Date().toLocaleString("vi-VN") // ngày đặt
+                };
+
+                // 4. Lấy danh sách đơn hàng cũ và thêm đơn mới
+                let orders = JSON.parse(localStorage.getItem("orders")) || [];
+                orders.push(order);
+                localStorage.setItem("orders", JSON.stringify(orders));
+
+                
+                // 4. Lưu đơn hàng vào localStorage
+                let orders = JSON.parse(localStorage.getItem("orders")) || [];
+                orders.push(order);
+                localStorage.setItem("orders", JSON.stringify(orders));
+
+                // --- Gọi renderOrders() để cập nhật tab ngay lập tức ---
+                renderOrders();
+                // Lưu vào localStorage
+                let orders = JSON.parse(localStorage.getItem("orders")) || [];
+                orders.push(order);
+                localStorage.setItem("orders", JSON.stringify(orders));
+
+                // --- Nếu function renderOrders() có sẵn trong trang này, gọi để cập nhật ngay ---
+                if (typeof renderOrders === 'function') {
+                    renderOrders();
+                }
+
+              
+
+
+                
+            });
+        </script>
+    </div>
+</body>
+
+</html>

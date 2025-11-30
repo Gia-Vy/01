@@ -1,0 +1,71 @@
+﻿@model Phone_web.Models.Product
+
+@{
+    ViewBag.Title ="Suasanpham";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-4">
+
+    <h2 class="title text-center">📝 Cập Nhật Sản Phẩm</h2>
+
+    @using (Html.BeginForm("Suasanpham", "Product", new { area = "Admin" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <table class="table table-bordered align-middle mt-4">
+
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.ProName)</th>
+                <td>
+                    @Html.EditorFor(m => m.ProName, new { htmlAttributes = new { @class = "form-control" } })
+
+                </td>
+            </tr>
+
+
+            <tr>
+                <th>Loại sản phẩm</th>
+                <td>
+                    @Html.DropDownListFor(m => m.CatID, (SelectList)ViewBag.Categories, "Chọn Category", new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.ProDescription)</th>
+                <td>
+                    @Html.EditorFor(m => m.ProDescription, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+            </tr>
+
+
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.ProImage)</th>
+                <td>
+                    <input type="file" name="ImagePath" id="ImagePath" class="form-control" />
+                    <img src="@Model.ProImage" width="150" height="150" />
+
+                </td>
+            </tr>
+
+        </table>
+
+        <div class="text-center mt-4">
+            <input type="submit" value="💾 Cập nhật" class="btn btn-warning fw-bold  text-dark" />
+            @Html.ActionLink("⬅️ Quay về", "sanpham", null, new { @class = "btn btn-info text-dark fw-bold " })
+        </div>
+    }
+</div>
+
+<script>
+    document.getElementById("ImagePath").addEventListener("change", function(event) {
+        const [file] = event.target.files;
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById("imgPreview").src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

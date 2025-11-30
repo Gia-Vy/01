@@ -1,0 +1,161 @@
+﻿@{
+    ViewBag.Title = "Shipping";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+
+    // Trạng thái hiện tại (có thể đổi tùy tiến độ đơn hàng)
+    var status = "Chờ Lấy Hàng";
+
+    // Danh sách các bước xử lý đơn hàng
+    var steps = new[]
+    {
+        "Đơn Hàng Đã Đặt",
+        "Đơn Hàng Đã Được Xác Nhận",
+        "Đã Xác Nhận Thanh Toán",
+        "Chờ Lấy Hàng",
+        "Đang Giao",
+        "Đã Giao"
+    };
+
+    int currentIndex = Array.IndexOf(steps, status);
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            font-family: "Poppins", Arial, sans-serif;
+            background-color: #f9f9fc;
+            color: #333;
+            padding: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            color: #444;
+            margin-bottom: 40px;
+        }
+
+        /* ====== Thanh tiến trình ====== */
+        .progress-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* đường thẳng nối giữa các bước */
+        .progress-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: #e0e0e0;
+            z-index: 0;
+            transform: translateY(-50%);
+            border-radius: 3px;
+        }
+
+        .progress-line-fill {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 6px;
+            background-color: #a4c3ff;
+            z-index: 1;
+            transform: translateY(-50%);
+            border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+
+        /* từng bước */
+        .step {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+            width: 150px;
+        }
+
+        .circle {
+            width: 28px;
+            height: 28px;
+            margin: 20px auto ;
+            border-radius: 50%;
+            background-color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .active .circle {
+            background-color: #6fa8dc;
+        }
+
+        .completed .circle {
+            background-color: #85dcb0;
+        }
+
+        .step p {
+            font-size: 14px;
+            margin: 0;
+            color: #555;
+        }
+
+        /* Nút về trang chủ */
+        .home-btn {
+            display: inline-block;
+            background-color: #b8c6ff;
+            color: #333;
+            text-decoration: none;
+            padding: 20px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 26px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin: 50px;
+        }
+
+            .home-btn:hover {
+                background-color: #9aaeff;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>📦 Theo dõi đơn hàng</h2>
+
+    <div class="progress-wrapper">
+        <div class="progress-line"></div>
+        <div class="progress-line-fill" style="width:@(((double)currentIndex / (steps.Length - 1)) * 100)"></div>
+
+        @for (int i = 0; i < steps.Length; i++)
+        {
+            var stepClass = i < currentIndex ? "completed" :
+                            i == currentIndex ? "active" : "";
+            <div class="step @stepClass">
+                <div class="circle">@(i + 1)</div>
+                <p>@steps[i]</p>
+            </div>
+        }
+    </div>
+
+    <div class="center">
+        <a href="Index" class="home-btn"> Quay về trang chủ</a>
+    </div>
+</body>
+</html>
+

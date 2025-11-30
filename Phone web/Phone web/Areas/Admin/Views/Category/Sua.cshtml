@@ -1,0 +1,37 @@
+﻿@model Phone_web.Models.Category
+
+@{
+    ViewBag.Title = "Sua";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-4">
+
+    <h2 class="title text-center">📝 Cập Nhật Danh Mục</h2>
+
+    @using (Html.BeginForm("Sua", "Category", new { area = "Admin" }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <table class="table table-bordered align-middle mt-4">
+
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.CatName)</th>
+                <td>
+                    @Html.EditorFor(m => m.CatName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.CatName, "", new { @class = "text-danger" })
+
+                </td>
+            </tr>
+        </table>
+
+        <div class="text-center mt-4">
+            <input type="submit" value="💾 Cập nhật" class="btn btn-warning fw-bold  text-dark" />
+            @Html.ActionLink("⬅️ Quay về", "danhmuc", null, new { @class = "btn btn-info text-dark fw-bold " })
+        </div>
+    }
+</div>

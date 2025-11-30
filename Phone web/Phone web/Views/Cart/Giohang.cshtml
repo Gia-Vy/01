@@ -1,0 +1,404 @@
+﻿@model List<Phone_web.Models.Giohang>
+
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<div class="khung-giohang">
+
+
+    @if (Model != null && Model.Any())
+    {
+        <!-- KHUNG BAO BẢNG + TẠM TÍNH -->
+        <div class="bang-giohang-wrapper">
+
+            <table class="bang-giohang">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Sản phẩm</th>
+                        <th>Màu</th>
+                        <th>Dung lượng</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                        <th>Thành tiền</th>
+                        <th>Chức năng</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr data-id="@item.idPro">
+                            <td><img src="@Url.Content(item.ProImage ?? "/images/no-image.png")" width="120" height="120" /></td>
+
+                            <td>@item.namePro</td>
+                            <td>@item.ColorName</td>
+                            <td>@item.DungLuongName</td>
+
+                            <td>
+                                <div class="quantity-wrapper">
+                                    <button type="button" class="qty-btn minus" data-id="@item.idPro">-</button>
+                                    <input type="number" class="qty-input" value="@item.quantity" min="1" data-id="@item.idPro" />
+                                    <button type="button" class="qty-btn plus" data-id="@item.idPro">+</button>
+                                </div>
+                            </td>
+
+                            <td>@item.price.ToString("N0") ₫</td>
+                            <td class="total-item">@item.total.ToString("N0") ₫</td>
+
+                            <td>
+                                @Html.ActionLink("Xoá", "xoagh", "Cart", new { id = item.idPro }, new { @class = "btn btn-danger btn-sm" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <!-- KHUNG TẠM TÍNH (Dính vào bảng - không rớt xuống footer) -->
+            <div class="tam-tinh">
+                Tạm tính: <strong>@ViewBag.Total.ToString("N0") ₫</strong>
+            </div>
+
+        </div>
+
+        <!-- Nút thanh toán -->
+        <a href="@Url.Action("ThanhToan","Cart")" class="btn-vien-thuoc">
+            Xác Nhận Thanh Toán
+        </a>
+
+
+                    <!-- SCRIPT TÍNH TỔNG -->
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+
+                    const quantityWrappers = document.querySelectorAll('.quantity-wrapper');
+
+                    quantityWrappers.forEach(wrapper => {
+                        const minusBtn = wrapper.querySelector('.minus');
+                        const plusBtn = wrapper.querySelector('.plus');
+                        const input = wrapper.querySelector('.qty-input');
+
+                        minusBtn.addEventListener('click', function () {
+                            let val = parseInt(input.value) || 1;
+                            if (val > 1) input.value = val - 1;
+                            updateRowTotal(wrapper.closest('tr'));
+                        });
+
+                        plusBtn.addEventListener('click', function () {
+                            let val = parseInt(input.value) || 1;
+                            input.value = val + 1;
+                            updateRowTotal(wrapper.closest('tr'));
+                        });
+
+                        input.addEventListener('input', function () {
+                            let val = parseInt(this.value) || 1;
+                            if (val < 1) val = 1;
+                            this.value = val;
+                            updateRowTotal(wrapper.closest('tr'));
+                        });
+                    });
+
+                    function updateRowTotal(tr) {
+                        const priceCell = tr.querySelector('td:nth-child(6)'); // Cột Giá
+                        const totalCell = tr.querySelector('.total-item');
+                        const qtyInput = tr.querySelector('.qty-input');
+
+                        const price = parseInt(priceCell.innerText.replace(/[^0-9]/g, '')) || 0;
+                        const qty = parseInt(qtyInput.value) || 0;
+
+                        const total = price * qty;
+                        totalCell.innerText = total.toLocaleString() + ' ₫';
+
+                        // Cập nhật tạm tính
+                        let sum = 0;
+                        document.querySelectorAll('.total-item').forEach(td => {
+                            sum += parseInt(td.innerText.replace(/[^0-9]/g, '')) || 0;
+                        });
+
+                        document.querySelector('.tam-tinh strong').innerText = sum.toLocaleString() + ' ₫';
+                    }
+
+                });
+            </script>
+
+    }
+    else
+    {
+        <div class="cart-title-wrapper">
+            <h2 class="cart-title">🛒GIỎ HÀNG CỦA BẠN</h2>
+            <p class="cart-subtitle">Giỏ hàng của bạn chưa có sản phẩm nào</p>
+        </div>
+
+        <p class="support-text">Hỗ trợ: <strong>121212</strong> (08h00 - 22h00)</p>
+
+    }
+</div>
+
+<style>
+    /* FONT CHUẨN APPLE */
+    .khung-giohang,
+    .khung-giohang * {
+        font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+    }
+
+    /* Khung tổng */
+    .khung-giohang {
+        max-width: 1300px;
+        margin: 20px auto;
+    }
+
+    /* Tiêu đề */
+    .tieu-de-giohang {
+        font-weight: 700;
+        color: #1d1d1f;
+        margin-bottom: 20px;
+    }
+
+    /* Bao bảng */
+    .bang-giohang-wrapper {
+        position: relative; /* ĐỂ TẠM TÍNH BÁM ĐÚNG */
+        padding-bottom: 80px; /* chừa chỗ cho tạm tính */
+    }
+
+    /* Bảng */
+    .bang-giohang {
+        width: 100%;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        border-collapse: collapse;
+    }
+
+        .bang-giohang th {
+            background: #f5f5f7;
+            padding: 18px;
+            font-weight: 800;
+        }
+
+        .bang-giohang td {
+            padding: 16px;
+            border-bottom: 1px solid #e5e5ea;
+        }
+
+    /* ===== TẠM TÍNH SANG TRỌNG ===== */
+    .tam-tinh {
+        position: absolute;
+        bottom: 10px;
+        right: 25px;
+        background: #fff;
+        padding: 18px 28px;
+        border-radius: 14px;
+        font-size: 22px;
+        font-weight: 700;
+        color: #1d1d1f;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+        .tam-tinh strong {
+            color: #d63031;
+            margin-left: 8px;
+        }
+
+    /* Nút thanh toán đẹp */
+    .btn-vien-thuoc {
+        display: block;
+        width: 300px;
+        margin: 40px auto;
+        padding: 15px 0;
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        font-weight: 700;
+        background: #0d6efd;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        transition: 0.2s;
+    }
+
+        .btn-vien-thuoc:hover {
+            background: #0b5ed7;
+            transform: translateY(-3px);
+        }
+
+    /* Số lượng */
+    .quantity-wrapper {
+        display: flex;
+        gap: 6px;
+    }
+
+    .qty-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: none;
+        background: #0d6efd;
+        color: white;
+        font-size: 20px;
+    }
+
+    .qty-input {
+        width: 50px;
+        text-align: center;
+        padding: 5px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+    /*gio hang cua ban*/
+    .cart-title-wrapper {
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 25px;
+    }
+
+    .cart-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #000;
+        font-family: "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .cart-subtitle {
+        margin-top: 8px;
+        font-size: 17px;
+        color: #555;
+        font-family: "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    }
+    .support-text {
+        text-align: center;
+        font-size: 18px;
+        margin-top: 10px;
+        font-family: "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+        color: #444;
+    }
+
+    /* ==== Responsive cho iPad và điện thoại ==== */
+
+/* iPad ngang (768px - 1024px) */
+@@media (max-width: 1024px) {
+    .bang-giohang th, .bang-giohang td {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .qty-input {
+        width: 40px;
+        font-size: 14px;
+    }
+
+    .qty-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
+    }
+
+    .tam-tinh {
+        font-size: 18px;
+        padding: 14px 20px;
+    }
+
+    .btn-vien-thuoc {
+        width: 250px;
+        font-size: 18px;
+    }
+}
+
+/* Tablet dọc / điện thoại (dưới 768px) */
+@@media (max-width: 767px) {
+    .bang-giohang-wrapper {
+        overflow-x: auto; /* Cho phép scroll ngang */
+    }
+
+    .bang-giohang {
+        min-width: 600px; /* bảng không bị quá nhỏ */
+    }
+
+    .bang-giohang th, .bang-giohang td {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .qty-input {
+        width: 35px;
+        font-size: 12px;
+    }
+
+    .qty-btn {
+        width: 25px;
+        height: 25px;
+        font-size: 16px;
+    }
+
+    .tam-tinh {
+        font-size: 16px;
+        padding: 10px 15px;
+        bottom: 5px;
+        right: 10px;
+    }
+
+    .btn-vien-thuoc {
+        width: 200px;
+        font-size: 16px;
+        padding: 12px 0;
+    }
+
+    .bang-giohang td img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .cart-title {
+        font-size: 28px;
+    }
+
+    .cart-subtitle, .support-text {
+        font-size: 15px;
+    }
+}
+
+/* Mobile cực nhỏ (dưới 480px) */
+@@media (max-width: 480px) {
+    .bang-giohang {
+        min-width: 450px;
+    }
+
+    .qty-input {
+        width: 30px;
+    }
+
+    .qty-btn {
+        width: 22px;
+        height: 22px;
+        font-size: 14px;
+    }
+
+    .tam-tinh {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .btn-vien-thuoc {
+        width: 180px;
+        font-size: 14px;
+        padding: 10px 0;
+    }
+
+    .bang-giohang td img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .cart-title {
+        font-size: 24px;
+    }
+
+    .cart-subtitle, .support-text {
+        font-size: 14px;
+    }
+}
+
+</style>

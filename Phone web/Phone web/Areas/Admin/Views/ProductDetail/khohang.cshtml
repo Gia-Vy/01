@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Phone_web.Models.ProductDetail>
+
+@{
+    ViewBag.Title = "khohang";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+
+
+<div class="container">
+    <h2 class="title text-center  title"> QUẢN LÍ KHO HÀNG</h2>
+    @using (Html.BeginForm("khohang", "OrderDetail", FormMethod.Get, new { area = "Admin" }))
+    {
+        <div class="row mb-4 justify-content-center">
+            <div class="col-md-5">
+        
+
+        </div>
+    </div>
+
+}
+    <table class="table table-bordered table-hover align-middle">
+        <thead class="table" style="background-color: #e7f1ff; ">
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th>Màu</th>
+                <th>Dung lượng</th>
+                <th>Giá</th>
+                <th>Còn lại</th>
+                <th>Đã bán</th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td class="text-center fw-semibold">@item.Product.ProName</td>
+
+                    <td class="text-center fw-semibold">@item.Color.ColorName</td>
+                    <td class="text-center fw-semibold">@item.DungLuong.DungLuongName</td>
+                    <td class="text-center fw-semibold">@item.Price</td>
+                    <td class="text-center fw-semibold">@item.RemainQuantity</td>
+                    <td class="text-center fw-semibold">@item.SoldQuantity</td>
+
+
+                    <td class="text-center">
+                        @Html.ActionLink("✏️ Sửa", "Suasp", "ProductDetail", new { id = item.ProDeID, area = "Admin" }, new { @class = "btn btn-warning btn-sm mx-1" })
+                        @Html.ActionLink("🗑️ Xóa", "Xoasp", "ProductDetail", new { id = item.ProDeID, area = "Admin" }, new { @class = "btn btn-danger btn-sm mx-1" })
+                        @Html.ActionLink("🔍 Chi tiết", "chitietsp", "ProductDetail", new { id = item.ProDeID, area = "Admin" }, new { @class = "btn btn-info btn-sm mx-1" })
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+    <div class="text-end mt-3">
+        @Html.ActionLink("➕ Thêm mới", "Themsp", "ProductDetail", null, new { @class = "btn btn-dark text-white  fw-bold" })
+
+    </div>
+</div>
+

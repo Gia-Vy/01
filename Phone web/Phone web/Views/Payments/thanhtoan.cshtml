@@ -1,0 +1,44 @@
+﻿@*@model IEnumerable<Phone_web.Models.Payment>
+
+@{
+    ViewBag.Title = "thanhtoan";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml"; 
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<h2>Danh sách thanh toán</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Mã Thanh Toán</th>
+            <th>Đơn hàng</th>
+            <th>Số tiền</th>
+            <th>Phương thức</th>
+            <th>Ngày thanh toán</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PaymentID</td>
+                <td>@item.Order?.OrderName</td>
+                <td>@item.PaymentAmount</td>
+                <td>@item.PaymentMethod</td>
+                <td>@item.PaymentDate</td>
+                <td>@item.PaymentStatus</td>
+                <td>@item.TransactionCode</td>
+
+                <td>
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.PaymentID }) |
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.PaymentID }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.PaymentID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>*@

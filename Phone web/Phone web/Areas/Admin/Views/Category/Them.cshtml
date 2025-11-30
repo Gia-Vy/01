@@ -1,0 +1,40 @@
+﻿@model Phone_web.Models.Category
+
+@{
+    ViewBag.Title = "Them";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>Thêm Danh Mục</h2>
+@using (Html.BeginForm("Them", "Category", new { area = "Admin" }, FormMethod.Post))
+//có 2 hàm thêm thì ghi để bít dô nào get hay post
+{
+    @Html.AntiForgeryToken()//gửi form lên mới xóa code- có nghĩa dữ liệu nhập đã dc lưu và ko còn sau khi post
+    <table class="table table-bordered align-middle mt-4">
+
+
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.CatID)
+            </th>
+            <td>
+                @Html.EditorFor(m => m.CatName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.CatName, "", new { @class = "text-danger" })
+
+            </td>
+
+        </tr>
+
+
+
+        <tr>
+            <td colspan="2" class="text-center mt-4">
+                <input type="submit" value=" Lưu" class="btn btn-danger fw-bold mx-2" />
+                @Html.ActionLink("⬅️ Quay về ", "danhmuc", null, new { @class = "btn btn-info text-dark fw-bold mx-2" })
+            </td>
+        </tr>
+
+    </table>
+}

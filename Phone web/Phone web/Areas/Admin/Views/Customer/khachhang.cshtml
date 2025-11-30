@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Phone_web.Models.Customer>
+
+@{
+    ViewBag.Title = "khachhang";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+    <h2 class="title text-center  title">📄 Danh Sách Khách Hàng</h2>
+
+    <table class="table table-bordered table-hover align-middle">
+        <thead class="table" style="background-color: #e7f1ff; ">
+            <tr>
+                <th>SĐT (ID)</th>
+                <th>Tên khách</th>
+                <th>Email</th>
+
+                <th>Ngày tạo</th>
+                <th>Lần đăng nhập cuối</th>
+                <th>Chức năng</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CusPhone</td>
+                    <td>@item.CusName</td>
+                    <td>@item.CusEmail</td>
+                    <td>@item.CreateDate</td>
+                    <td>@item.LastLogin</td>
+
+                    <td>
+                    @*@Html.ActionLink("✏️ Sửa", "suakh", "Customer", new { id = item.CusPhone, area = "Admin" }, new { @class = "btn btn-warning btn-sm mx-1" })*@
+                    @Html.ActionLink("🗑️ Xóa", "xoakh", "Customer", new { id = item.CusPhone, area = "Admin" }, new { @class = "btn btn-danger btn-sm mx-1" })
+                    @Html.ActionLink("🔍 Chi tiết", "chitietkh", "Customer", new { id = item.CusPhone, area = "Admin" }, new { @class = "btn btn-info btn-sm mx-1" })
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+
+
+    </table>
+
+    <div class="text-end mt-3">
+        @Html.ActionLink("➕ Thêm mới","themkh", "Customer", null, new { @class = "btn btn-dark text-white  fw-bold" })
+
+    </div>
+</div>
+

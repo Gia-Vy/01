@@ -1,0 +1,757 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\views\\cart\\giohang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\cart\\giohang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|c:\\users\\po\\documents\\lt web\\phone web\\phone web\\views\\customerhome\\trangchukh.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\customerhome\\trangchukh.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\views\\customerhome\\chitietsp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\customerhome\\chitietsp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\views\\shared\\shared\\_layoutcustomer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\shared\\shared\\_layoutcustomer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\views\\shared\\_layoutcustomer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\shared\\_layoutcustomer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\models\\giohang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\models\\giohang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\areas\\admin\\views\\product\\sanpham.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\areas\\admin\\views\\product\\sanpham.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\areas\\admin\\views\\productdetail\\chitietsp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\areas\\admin\\views\\productdetail\\chitietsp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\views\\customerhome\\category.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\customerhome\\category.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\areas\\admin\\controllers\\productdetailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\areas\\admin\\controllers\\productdetailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\areas\\admin\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\areas\\admin\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\views\\users\\taikhoan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\users\\taikhoan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\views\\payments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\payments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\views\\shared\\_layoutpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\shared\\_layoutpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\views\\payments\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\payments\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\views\\payments\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\payments\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\views\\trangchu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\trangchu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\views\\users\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\users\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\models\\webmodel.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\models\\webmodel.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\controllers\\customerhomecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\controllers\\customerhomecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\controllers\\trangchucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\controllers\\trangchucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\models\\userhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\models\\userhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\models\\customerhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\models\\customerhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\views\\payments\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\payments\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\views\\payments\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\views\\payments\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\areas\\admin\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\areas\\admin\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\areas\\adminn\\views\\productdetail\\chitietsp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\areas\\adminn\\views\\productdetail\\chitietsp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\content\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\content\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\areas\\admin\\views\\productdetail\\khohang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\areas\\admin\\views\\productdetail\\khohang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\areas\\admin\\views\\productdetail\\suasp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\areas\\admin\\views\\productdetail\\suasp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\areas\\admin\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\areas\\admin\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\models\\productimages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\models\\productimages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\areas\\admin\\views\\productdetail\\themsp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\areas\\admin\\views\\productdetail\\themsp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\models\\webmodel.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\models\\webmodel.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|C:\\Users\\Po\\Documents\\LT Web\\Phone web\\phone web\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7AE4D86-D87D-4C56-BED6-C6179ADD501D}|Phone web\\Phone web.csproj|solutionrelative:phone web\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Payments\\Create.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\Payments\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Payments\\Create.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\Payments\\Create.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAEYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-24T15:28:03.929Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "trangchuKh.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\CustomerHome\\trangchuKh.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\CustomerHome\\trangchuKh.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\CustomerHome\\trangchuKh.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\CustomerHome\\trangchuKh.cshtml",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAADMAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-24T17:15:10.462Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Giohang.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Cart\\Giohang.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\Cart\\Giohang.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Cart\\Giohang.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\Cart\\Giohang.cshtml",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAAANcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-25T07:44:13.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "Phone web\\Controllers\\CartController.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Controllers\\CartController.cs*",
+              "RelativeToolTip": "Phone web\\Controllers\\CartController.cs*",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAqwLIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T04:34:38.594Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ChiTietSP.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\CustomerHome\\ChiTietSP.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\CustomerHome\\ChiTietSP.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\CustomerHome\\ChiTietSP.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\CustomerHome\\ChiTietSP.cshtml",
+              "ViewState": "AgIAANUAAAAAAAAAAAAAAPQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-24T16:36:12.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_LayoutCustomer.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Shared\\shared\\_LayoutCustomer.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\Shared\\shared\\_LayoutCustomer.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Shared\\shared\\_LayoutCustomer.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\Shared\\shared\\_LayoutCustomer.cshtml",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAGQAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-25T08:23:13.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_LayoutCustomer.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Shared\\_LayoutCustomer.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\Shared\\_LayoutCustomer.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Shared\\_LayoutCustomer.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\Shared\\_LayoutCustomer.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAIEAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-25T03:35:37.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Giohang.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\Giohang.cs",
+              "RelativeDocumentMoniker": "Phone web\\Models\\Giohang.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\Giohang.cs",
+              "RelativeToolTip": "Phone web\\Models\\Giohang.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T06:04:25.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "sanpham.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Views\\Product\\sanpham.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Areas\\Admin\\Views\\Product\\sanpham.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Views\\Product\\sanpham.cshtml",
+              "RelativeToolTip": "Phone web\\Areas\\Admin\\Views\\Product\\sanpham.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-25T07:46:45.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "category.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\CustomerHome\\category.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\CustomerHome\\category.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\CustomerHome\\category.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\CustomerHome\\category.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-24T16:36:13.334Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Phone web\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Phone web\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T08:36:19.244Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Chitietsp.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Views\\ProductDetail\\Chitietsp.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Areas\\Admin\\Views\\ProductDetail\\Chitietsp.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Views\\ProductDetail\\Chitietsp.cshtml",
+              "RelativeToolTip": "Phone web\\Areas\\Admin\\Views\\ProductDetail\\Chitietsp.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-25T08:36:40.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Phone web\\Areas\\Admin\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Phone web\\Areas\\Admin\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAHMAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T10:05:11.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TaiKhoan.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Users\\TaiKhoan.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\Users\\TaiKhoan.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Users\\TaiKhoan.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\Users\\TaiKhoan.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAEMAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-25T06:48:47.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ProductDetailController.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Controllers\\ProductDetailController.cs",
+              "RelativeDocumentMoniker": "Phone web\\Areas\\Admin\\Controllers\\ProductDetailController.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Controllers\\ProductDetailController.cs",
+              "RelativeToolTip": "Phone web\\Areas\\Admin\\Controllers\\ProductDetailController.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAowHYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T09:24:09.628Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Users\\Login.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\Users\\Login.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Users\\Login.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\Users\\Login.cshtml",
+              "ViewState": "AgIAADsAAAAAAAAAAAAiwE8AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-25T06:47:42.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Payments\\Index.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\Payments\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Payments\\Index.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\Payments\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-25T03:39:43.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "_LayoutPage.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Shared\\_LayoutPage.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\Shared\\_LayoutPage.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Shared\\_LayoutPage.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\Shared\\_LayoutPage.cshtml",
+              "ViewState": "AgIAACUAAAAAAAAAAAAAADQAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-25T03:18:05.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Payments\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\Payments\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Payments\\Delete.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\Payments\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-24T16:38:36.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "PaymentsController.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Controllers\\PaymentsController.cs",
+              "RelativeDocumentMoniker": "Phone web\\Controllers\\PaymentsController.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Controllers\\PaymentsController.cs",
+              "RelativeToolTip": "Phone web\\Controllers\\PaymentsController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAkwBIAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T15:18:39.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Trangchu\\Index.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\Trangchu\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Trangchu\\Index.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\Trangchu\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-25T07:54:30.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Phone web\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Phone web\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T06:43:48.557Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Users\\Register.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\Users\\Register.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Users\\Register.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\Users\\Register.cshtml",
+              "ViewState": "AgIAADcAAAAAAAAAAAAiwEoAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-25T06:46:04.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "WebModel.Context.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\WebModel.Context.cs",
+              "RelativeDocumentMoniker": "Phone web\\Models\\WebModel.Context.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\WebModel.Context.cs",
+              "RelativeToolTip": "Phone web\\Models\\WebModel.Context.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T06:16:33.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "CustomerHomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Controllers\\CustomerHomeController.cs",
+              "RelativeDocumentMoniker": "Phone web\\Controllers\\CustomerHomeController.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Controllers\\CustomerHomeController.cs",
+              "RelativeToolTip": "Phone web\\Controllers\\CustomerHomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T05:27:40.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "TrangchuController.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Controllers\\TrangchuController.cs",
+              "RelativeDocumentMoniker": "Phone web\\Controllers\\TrangchuController.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Controllers\\TrangchuController.cs",
+              "RelativeToolTip": "Phone web\\Controllers\\TrangchuController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T16:41:24.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "UserHome.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\UserHome.cs",
+              "RelativeDocumentMoniker": "Phone web\\Models\\UserHome.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\UserHome.cs",
+              "RelativeToolTip": "Phone web\\Models\\UserHome.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwB0AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T06:39:13.407Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "customerHome.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\customerHome.cs",
+              "RelativeDocumentMoniker": "Phone web\\Models\\customerHome.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\customerHome.cs",
+              "RelativeToolTip": "Phone web\\Models\\customerHome.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T05:31:46.094Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "Phone web\\Models\\Category.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\Category.cs",
+              "RelativeToolTip": "Phone web\\Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T06:25:57.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "OrderDetail.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\OrderDetail.cs",
+              "RelativeDocumentMoniker": "Phone web\\Models\\OrderDetail.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\OrderDetail.cs",
+              "RelativeToolTip": "Phone web\\Models\\OrderDetail.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T06:12:13.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "Phone web\\Models\\Order.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\Order.cs",
+              "RelativeToolTip": "Phone web\\Models\\Order.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAwwCcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T06:11:53.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "CustomerController.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Controllers\\CustomerController.cs",
+              "RelativeDocumentMoniker": "Phone web\\Areas\\Admin\\Controllers\\CustomerController.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Controllers\\CustomerController.cs",
+              "RelativeToolTip": "Phone web\\Areas\\Admin\\Controllers\\CustomerController.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAA7wAwAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T05:27:27.309Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "Style.css",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Content\\Style.css",
+              "RelativeDocumentMoniker": "Phone web\\Content\\Style.css",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Content\\Style.css",
+              "RelativeToolTip": "Phone web\\Content\\Style.css",
+              "ViewState": "AgIAANUAAAAAAAAAAAAiwPcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-25T03:46:28.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Payments\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\Payments\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Payments\\Edit.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\Payments\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-24T16:38:37.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Payments\\Details.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Views\\Payments\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Views\\Payments\\Details.cshtml",
+              "RelativeToolTip": "Phone web\\Views\\Payments\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-24T16:38:36.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "ProductImages.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\ProductImages.cs",
+              "RelativeDocumentMoniker": "Phone web\\Models\\ProductImages.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\ProductImages.cs",
+              "RelativeToolTip": "Phone web\\Models\\ProductImages.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T16:28:01.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "WebModel.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\WebModel.Designer.cs",
+              "RelativeDocumentMoniker": "Phone web\\Models\\WebModel.Designer.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\WebModel.Designer.cs",
+              "RelativeToolTip": "Phone web\\Models\\WebModel.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T15:54:28.608Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "Payment.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\Payment.cs",
+              "RelativeDocumentMoniker": "Phone web\\Models\\Payment.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Models\\Payment.cs",
+              "RelativeToolTip": "Phone web\\Models\\Payment.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAwwA8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T15:36:27.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "Phone web\\Areas\\Admin\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "Phone web\\Areas\\Admin\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T15:15:08.29Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Suasp.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Views\\ProductDetail\\Suasp.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Areas\\Admin\\Views\\ProductDetail\\Suasp.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Views\\ProductDetail\\Suasp.cshtml",
+              "RelativeToolTip": "Phone web\\Areas\\Admin\\Views\\ProductDetail\\Suasp.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-23T09:10:31.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "khohang.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Views\\ProductDetail\\khohang.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Areas\\Admin\\Views\\ProductDetail\\khohang.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Views\\ProductDetail\\khohang.cshtml",
+              "RelativeToolTip": "Phone web\\Areas\\Admin\\Views\\ProductDetail\\khohang.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-23T09:39:06.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "Themsp.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Views\\ProductDetail\\Themsp.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Areas\\Admin\\Views\\ProductDetail\\Themsp.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Admin\\Views\\ProductDetail\\Themsp.cshtml",
+              "RelativeToolTip": "Phone web\\Areas\\Admin\\Views\\ProductDetail\\Themsp.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-23T09:35:57.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Chitietsp.cshtml",
+              "DocumentMoniker": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Adminn\\Views\\ProductDetail\\Chitietsp.cshtml",
+              "RelativeDocumentMoniker": "Phone web\\Areas\\Adminn\\Views\\ProductDetail\\Chitietsp.cshtml",
+              "ToolTip": "C:\\Users\\Po\\Documents\\LT Web\\Phone web\\Phone web\\Areas\\Adminn\\Views\\ProductDetail\\Chitietsp.cshtml",
+              "RelativeToolTip": "Phone web\\Areas\\Adminn\\Views\\ProductDetail\\Chitietsp.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-23T09:13:19.846Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Xác nhận đơn hàng";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Xác nhận đơn hàng</h2>
+    <div id="confirm-list" class="table-responsive"></div>
+    <a href="@Url.Action("Checkout", "Order")" class="btn btn-primary mt-3">Tiếp tục thanh toán</a>
+</div>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let confirmList = document.getElementById("confirm-list");
+
+    if (cart.length === 0) {
+        confirmList.innerHTML = "<p>Giỏ hàng trống 🐼</p>";
+    } else {
+        let html = `
+            <table class="table table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                        <th>Tổng</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+        let total = 0;
+        cart.forEach(item => {
+            let qty = item.qty || 1;
+            let itemTotal = item.price * qty;
+            total += itemTotal;
+            html += `
+                <tr>
+                    <td>${item.name}</td>
+                    <td>${qty}</td>
+                    <td>${item.price.toLocaleString()}đ</td>
+                    <td>${itemTotal.toLocaleString()}đ</td>
+                </tr>
+            `;
+        });
+        html += `
+                <tr>
+                    <td colspan="3" class="text-end"><strong>Tổng cộng</strong></td>
+                    <td><strong>${total.toLocaleString()}đ</strong></td>
+                </tr>
+                </tbody>
+            </table>
+        `;
+        confirmList.innerHTML = html;
+    }
+</script>

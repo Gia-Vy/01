@@ -1,0 +1,166 @@
+﻿@model Phone_web.Models.ViewModel.RegisterVM
+
+@{
+    ViewBag.Title = "Đăng ký tài khoản";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<style>
+    body {
+        background: #f0f2f5;
+        font-family: Arial, sans-serif;
+    }
+
+    .Khoi1 {
+        width: 40%;
+        margin: 40px auto;                         /* cách vs viền trên*/
+        background: #fff;
+        padding: 35px 40px;                         /*cách lề với khối 2*/
+        border-radius: 12px;                        /*bo góc*/
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);    /*đổ bóng*/
+        border: 1px solid #e6e6e6;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;                        /*cách bên dưới*/
+        font-weight: bold;                          /*in đậm*/
+        color: #222;
+    }
+
+    .nhom1 {
+        margin-bottom: 18px;
+    }
+
+    .control-label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+        color: #333;
+    }
+
+    .nhapDL {
+        width: 100%;
+        padding: 12px;
+        border-radius: 6px;
+        border: 1px solid #cfcfcf;
+        outline: none;
+        transition: all .2s;
+        background: #fafafa;
+    }
+
+        .nhapDL:focus {
+            border-color: #007bff;
+            background: #fff;
+            box-shadow: 0 0 8px rgba(0,123,255,0.25);
+        }
+
+    .nutdangki {
+        width: 25%;
+        background: #007bff;
+        color: #fff;
+        font-size: 17px;
+        padding: 12px 0;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        transition: .25s;
+        text-align: center;
+        display: block;
+        margin: 20px auto;
+    }
+
+        .nutdangki:hover {
+            background: #0066d2;
+            cursor: pointer;
+        }
+
+    .login-link {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 14px;
+        color: #555;
+    }
+
+        .login-link a {
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            .login-link a:hover {
+                text-decoration: underline;
+            }
+
+    .text-danger {
+        font-size: 13px;
+    }
+</style>
+
+
+<div class="Khoi1">
+
+    @using (Html.BeginForm("Register", "Users", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <h2>Đăng ký tài khoản</h2>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <!-- Username -->
+        <div class="nhom1">
+            @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.UserName, new { @class = "nhapDL", placeholder = "Nhập tên đăng nhập..." })
+            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+        </div>
+
+        <!-- Password -->
+        <div class="nhom1">
+            @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+            @Html.PasswordFor(m => m.Password, new { @class = "nhapDL", placeholder = "Nhập mật khẩu..." })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="nhom1">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "nhapDL", placeholder = "Nhập lại mật khẩu..." })
+            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+
+        <!-- Full Name -->
+        <div class="nhom1">
+            @Html.LabelFor(m => m.CusName, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CusName, new { @class = "nhapDL", placeholder = "Họ và tên..." })
+            @Html.ValidationMessageFor(m => m.CusName, "", new { @class = "text-danger" })
+        </div>
+
+        <!-- Phone -->
+        <div class="nhom1">
+            @Html.LabelFor(m => m.CusPhone, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CusPhone, new { @class = "nhapDL", placeholder = "Số điện thoại..." })
+            @Html.ValidationMessageFor(m => m.CusPhone, "", new { @class = "text-danger" })
+        </div>
+
+        <!-- Email -->
+        <div class="nhom1">
+            @Html.LabelFor(m => m.CusEmail, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CusEmail, new { @class = "nhapDL", placeholder = "Email..." })
+            @Html.ValidationMessageFor(m => m.CusEmail, "", new { @class = "text-danger" })
+        </div>
+
+        <!-- Submit -->
+        <div class="nhom1">
+            <input type="submit" value="Đăng ký" class="nutdangki" />
+        </div>
+
+        <!-- Login Link -->
+        <div class="login-link">
+            Bạn đã có tài khoản?
+            <a href="@Url.Action("Login", "Users")">Đăng nhập</a>
+        </div>
+
+    }
+</div>

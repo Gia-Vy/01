@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "thongke";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<h2>📊 Thống Kê Tổng Hợp</h2>
+
+<hr />
+
+<h3>1. Số liệu chính</h3>
+<ul>
+    <li>Tổng danh mục: @ViewBag.TotalCategory</li>
+    <li>Tổng sản phẩm: @ViewBag.TotalProduct</li>
+    <li>Tổng phiên bản sản phẩm:@ViewBag.TotalProductDetail</li>
+    <li> khách hàng: @ViewBag.TotalCustomer</li>
+    <li>Tổng tài khoản Admin: @ViewBag.TotalUser</li>
+    <li>Tổng đơn hàng: @ViewBag.TotalOrder</li>
+    <li>Tổng dòng chi tiết đơn hàng: @ViewBag.TotalOrderDetail</li>
+</ul>
+
+<hr />
+
+<h3>2. Tình trạng đơn hàng</h3>
+<ul>
+    <li>Đang xử lý: @ViewBag.OrderPending</li>
+    <li>Đang giao: @ViewBag.OrderShipping</li>
+    <li>Hoàn tất: @ViewBag.OrderDone</li>
+    <li>Hủy: @ViewBag.OrderCancel</li>
+</ul>
+
+
+
+

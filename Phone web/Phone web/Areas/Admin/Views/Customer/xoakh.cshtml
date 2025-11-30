@@ -1,0 +1,67 @@
+﻿@model Phone_web.Models.Customer
+
+@{
+    ViewBag.Title = "xoakh";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-4">
+
+    <h2 class="title text-center">📝 Bạn Chắc Chắn Xóa Thông Tin Khách Hàng Này?</h2>
+
+    @using (Html.BeginForm("xoakh", "Customer", new { area = "Admin" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @* Hidden để truyền ID (ví dụ CusPhone là khoá chính) *@
+        @Html.HiddenFor(m => m.CusPhone)
+
+        <table class="table table-bordered">
+            <tr>
+                <th>Tên khách hàng</th>
+                <td>
+                    @Html.EditorFor(m => m.CusName,
+                        new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>SĐT</th>
+                <td>
+                    @Html.EditorFor(m => m.CusPhone, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>
+                    @Html.EditorFor(m => m.CusEmail, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>Mật khẩu</th>
+                <td>
+                    @Html.EditorFor(m => m.CusPassword, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>Vai trò</th>
+                <td>
+                    @Html.EditorFor(m => m.Role, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+        </table>
+
+        <div class="text-center mt-4">
+            <input type="submit" value="🗑️ Xóa" class="btn btn-warning fw-bold text-dark" />
+            @Html.ActionLink("⬅️ Quay về", "khachhang", null, new { @class = "btn btn-info text-dark fw-bold " })
+        </div>
+    }
+</div>
+
+
+
+
+

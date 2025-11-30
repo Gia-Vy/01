@@ -1,0 +1,59 @@
+﻿@model Phone_web.Models.Customer
+
+@{
+    ViewBag.Title = "themkh";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2> Thêm Khách Hàng</h2>
+@using (Html.BeginForm("themkh", "Customer", new { area = "Admin" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+    <table class="table">
+        <tr>
+
+            <th>Số điện thoại</th>
+            <td>@Html.EditorFor(m => m.CusPhone, new { htmlAttributes = new { @class = "form-control", type = "number" } })</td>
+
+        </tr>
+
+    
+        <tr>
+            <th>Mật khẩu</th>
+            <td>@Html.EditorFor(m => m.CusPassword, new { htmlAttributes = new { @class = "form-control", type = "password" } })</td>
+        </tr>
+        
+
+    
+        <tr>
+            <th>Tên khách</th>
+            <td>@Html.EditorFor(m => m.CusName, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+     
+
+       
+        <tr>
+            <th>Email</th>
+            <td> @Html.EditorFor(m => m.CusEmail, new { htmlAttributes = new { @class = "form-control" } })</td>
+
+        </tr>
+
+        <tr>
+            <th>Role</th>
+            <td>@Html.EditorFor(m => m.Role, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+
+
+
+    </table>
+   
+    <div class="text-center mt-4">
+        <input type="submit" value="Lưu" class="btn btn-danger fw-bold mx-2" />
+        @Html.ActionLink("⬅️ Quay về ", "khachhang", "Customer", new { area = "Admin" }, new { @class = "btn btn-info" })
+    </div>
+}
+
+
+

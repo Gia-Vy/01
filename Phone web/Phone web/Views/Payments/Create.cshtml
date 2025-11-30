@@ -1,0 +1,289 @@
+﻿<!--@model Phone_web.Models.Payment
+
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+
+
+
+<div class="checkout-container">
+
+
+  
+
+        <!-- =========================
+            HÌNH THỨC NHẬN HÀNG
+        ========================== -->
+        <!--<div class="section-box payment-form">
+            <h5 class="fw-bold mb-3">Hình thức nhận hàng</h5>
+
+            <div class="form-check form-check-inline">
+
+                <p>Giao tận nơi</p>
+            </div>-->
+
+
+
+            <!-- Khung nhập địa chỉ -->
+            <!--<div id="addressBox" class="group-box mt-3">
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <select id="Province" class="form-control">
+                            <option>Chọn tỉnh, thành phố</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <select id="District" class="form-control">
+                            <option>Chọn quận, huyện</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" name="DCNhanHang" class="form-control" placeholder="Địa chỉ cụ thể" required />
+
+                </div>
+
+                <input type="hidden" id="ShippingAddress" name="ShippingAddress" />
+            </div>
+        </div>
+
+    }-->
+    <!-- =========================
+        THÔNG TIN THANH TOÁN
+    ========================== -->
+
+    <!--<div class="text-center mt-4">
+
+        
+            <div class="section-box payment-form">
+                <h5 class="fw-bold section-title">Thông tin thanh toán</h5>
+
+
+
+                <div class="mb-2 form-group">
+                    <label>Số điện thoại khách hàng</label>
+                    <input type="text" name="CusPhone" class="form-control" required />
+                </div>
+
+                <div class="mb-2 form-group">
+                
+                </div>-->
+
+               
+
+
+
+
+
+
+        <!-- =========================
+            NÚT
+        ========================== -->
+        <!--<div class="action-buttons">
+            <a href="@Url.Action("Giohang", "Cart")" class="btn btn-secondary btn-left">Quay lại</a>
+
+        </div>
+
+        }
+
+    </div>
+    </div>
+    <script>
+        async function loadProvinces() {
+            let res = await fetch("https://provinces.open-api.vn/api/?depth=1");
+            let data = await res.json();
+            let p = document.getElementById("Province");
+
+            data.forEach(x => {
+                p.innerHTML += `<option value="${x.code}">${x.name}</option>`;
+            });
+        }
+
+        document.getElementById("Province").addEventListener("change", async function () {
+            let code = this.value;
+            let res = await fetch(`https://provinces.open-api.vn/api/p/${code}?depth=2`);
+            let data = await res.json();
+
+            let d = document.getElementById("District");
+            d.innerHTML = "<option>Chọn quận, huyện</option>";
+            data.districts.forEach(x => {
+                d.innerHTML += `<option>${x.name}</option>`;
+            });
+        });
+
+        loadProvinces();
+    </script>
+    <script>
+        // Ẩn / hiện box địa chỉ theo lựa chọn radio
+        function updateAddressBox() {
+            let shipHome = document.getElementById("ship_home").checked;
+            let box = document.getElementById("addressBox");
+
+            // Nếu giao tận nơi → hiện form địa chỉ
+            if (shipHome) {
+                box.style.display = "block";
+            }
+            // Nếu nhận tại cửa hàng → ẩn form địa chỉ
+            else {
+                box.style.display = "none";
+            }
+        }
+
+        document.getElementById("ship_home").addEventListener("change", updateAddressBox);
+        document.getElementById("ship_store").addEventListener("change", updateAddressBox);
+
+        updateAddressBox(); // chạy lần đầu khi load trang
+
+
+        // ==========================
+        // Load tỉnh và quận huyện
+        // ==========================
+
+        async function loadProvinces() {
+            let res = await fetch("https://provinces.open-api.vn/api/?depth=1");
+            let data = await res.json();
+            let p = document.getElementById("Province");
+
+            data.forEach(x => {
+                p.innerHTML += `<option value="${x.code}">${x.name}</option>`;
+            });
+        }
+
+        document.getElementById("Province").addEventListener("change", async function () {
+            let code = this.value;
+            let res = await fetch(`https://provinces.open-api.vn/api/p/${code}?depth=2`);
+            let data = await res.json();
+
+            let d = document.getElementById("District");
+            d.innerHTML = "<option>Chọn quận, huyện</option>";
+            data.districts.forEach(x => {
+                d.innerHTML += `<option>${x.name}</option>`;
+            });
+        });
+
+        loadProvinces();
+    </script>
+
+    <style>
+        /* ======= TỐI ƯU NHÌN ĐẸP, GỌN & ĐỀU ======= */
+
+        /* Tiêu đề nổi bật hơn, sát nội dung hơn */
+        .section-box h5 {
+            font-size: 21px !important;
+            font-weight: 700 !important;
+            margin-bottom: 12px !important;
+        }
+
+        /* Khoảng cách giữa các form group đều & nhỏ */
+        .form-group,
+        .mb-3 {
+            margin-bottom: 12px !important;
+        }
+
+        /* Các ô nhập đều chiều cao */
+        .form-control {
+            height: 42px !important;
+            padding: 8px 12px !important;
+            font-size: 15.5px !important;
+            border-radius: 10px !important;
+        }
+
+        /* Ô nhỏ (Trạng thái, Phương thức) */
+        .input-small,
+        .select-small {
+            height: 40px !important;
+            padding: 6px 10px !important;
+        }
+
+        /* Khoảng cách giữa các section gần lại */
+        .section-box {
+            margin-bottom: 18px !important;
+        }
+
+        /* Nổi bật các label */
+        .fw-bold {
+            font-weight: 600 !important;
+            margin-bottom: 3px;
+            display: inline-block;
+        }
+
+        /* ======== CĂN GIỮA FORM THANH TOÁN ======== */
+        .payment-form {
+            max-width: 420px; /* chiều rộng cố định -> các ô sẽ bằng nhau */
+            margin: 0 auto; /* căn giữa */
+        }
+
+        /* ======== TIÊU ĐỀ ======== */
+        .section-box h5 {
+            font-size: 21px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        /* ======== LABEL ======== */
+        .payment-form label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        /* ======== INPUT & SELECT ======== */
+        .payment-form .form-control {
+            width: 100%; /* làm tất cả ô bằng nhau */
+            height: 44px !important;
+            padding: 8px 12px !important;
+            font-size: 16px;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        /* ======== KHOẢNG CÁCH GIỮA CÁC TRƯỜNG ======== */
+        .payment-form .form-group,
+        .payment-form .mb-3 {
+            margin-bottom: 18px !important;
+        }
+        /* Khung chứa 2 nút */
+        .action-buttons {
+            display: flex;
+            justify-content: space-between; /* nút trái - nút phải */
+            align-items: center;
+            margin-top: 28px;
+        }
+
+            /* Làm 2 nút bằng nhau */
+            .action-buttons .btn {
+                width: 48%;
+                text-align: center;
+                padding: 12px 0;
+                font-size: 16px;
+                border-radius: 10px;
+                font-weight: 600;
+            }
+
+        /* Nút quay lại */
+        .btn-left {
+            background: #e0e0e0;
+            color: #000;
+            border: 1px solid #bdbdbd;
+        }
+
+        /* Nút lưu */
+        .btn-right {
+            background: #3f66ff;
+            color: white;
+            border: none;
+        }
+
+            .btn-right:hover {
+                background: #2d4fcc;
+            }
+
+        .btn-left:hover {
+            background: #d5d5d5;
+        }
+    </style>-->

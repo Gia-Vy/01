@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Phone_web.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "chitietdonhang";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container">
+    <h2 class="title text-center  title">📄 Danh Sách Chi Tiết Đơn Hàng</h2>
+
+    <table class="table table-bordered table-hover align-middle">
+        <thead class="table" style="background-color: #e7f1ff; ">
+            <tr>
+
+                <th>Đơn hàng</th>
+                <th>Sản phẩm</th>
+                <th>Màu</th>
+                <th>Dung lượng</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Thành tiền</th>
+         
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.OrderID</td>
+                    <td>@item.ProductDetail.Product.ProName</td>
+                    <td>@item.ProductDetail.Color.ColorName</td>
+                    <td>@item.ProductDetail.DungLuong.DungLuongName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.UnitPrice</td>
+                    <td>@(item.UnitPrice * item.Quantity)</td>
+                    @*<td class="text-center">
+
+                        @Html.ActionLink("🔍 Chi tiết", "chitiet", "OrderDetail",new {  id = item.OrderDeID, area = "Admin" }, new { @class = "btn btn-info btn-sm mx-1" })
+
+
+                    </td>*@
+                </tr>
+            }
+               
+            </tbody>
+
+    </table>
+
+  
+</div>
+
+

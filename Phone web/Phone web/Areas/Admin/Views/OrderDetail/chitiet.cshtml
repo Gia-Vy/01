@@ -1,0 +1,74 @@
+﻿@model Phone_web.Models.OrderDetail
+
+@{
+    ViewBag.Title = "chitiet";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-4">
+
+    <h2 class="title text-center ">Chi tiết sản phẩm</h2>
+
+    @using (Html.BeginForm("chitiet", "OrderDetail", new { area = "Admin" }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <table class="table table-bordered align-middle mt-4">
+
+            <tr>
+                <th>Đơn hàng</th>
+                <td>
+                    @Html.EditorFor(m => m.OrderID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>Sản phẩm</th>
+                <td>
+                    @Html.EditorFor(m => m.ProductDetail.Product.ProName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>Màu</th>
+                <td>
+                    @Html.EditorFor(m => m.ProductDetail.Color.ColorName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>Dung lượng</th>
+                <td>
+                    @Html.EditorFor(m => m.ProductDetail.DungLuong.DungLuongName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+
+
+
+
+
+
+
+            <tr>
+                <th>Số lượng</th>
+                <td>
+                    @Html.EditorFor(m => m.Quantity, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>Đơn giá</th>
+                <td>
+                    @Html.EditorFor(m => m.UnitPrice, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+
+                </td>
+            </tr>
+        </table>
+
+        <div class="text-center mt-4">
+
+            @Html.ActionLink("⬅️ Quay về", "chitietdonhang", "OrderDetail", new { area = "Admin" }, new { @class = "btn btn-info text-dark fw-bold mx-2" })
+        </div>
+    }
+</div>
+

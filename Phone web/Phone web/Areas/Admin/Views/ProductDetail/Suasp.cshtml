@@ -1,0 +1,75 @@
+﻿@model Phone_web.Models.ProductDetail
+
+@{
+    ViewBag.Title = "Suasp";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-4">
+
+    <h2 class="title text-center">📝 Cập Nhật Sản Phẩm</h2>
+
+    @using (Html.BeginForm("Suasp", "ProductDetail", new { area = "Admin" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(m => m.ProDeID)
+
+        @Html.AntiForgeryToken()
+
+        <table class="table table-bordered align-middle mt-4">
+
+
+            <tr>
+                <th>Tên sản phẩm</th>
+                <td>
+                    @Html.DropDownListFor(m => m.ProID, new SelectList(ViewBag.Products, "ProID", "ProName"), new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>Màu sắc</th>
+                <td>
+                    @Html.DropDownListFor(m => m.ColorID, new SelectList(ViewBag.Colors, "ColorID", "ColorName"), new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>Dung Lượng</th>
+                <td>
+                    @Html.DropDownListFor(m => m.DungLuongID, new SelectList(ViewBag.DungLuongs, "DungLuongID", "DungLuongName"), new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>Giá</th>
+                <td>
+                    @Html.EditorFor(m => m.Price, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Còn lại
+                </th>
+                <td>
+                    @Html.EditorFor(m => m.RemainQuantity, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Đã bán
+                </th>
+                <td>
+                    @Html.EditorFor(m => m.SoldQuantity, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+            </tr>
+
+
+
+
+        </table>
+
+        <div class="text-center mt-4">
+            <input type="submit" value="💾 Cập nhật" class="btn btn-warning fw-bold  text-dark" />
+            @Html.ActionLink("⬅️ Quay về ", "khohang", null, new { @class = "btn btn-info text-dark fw-bold mx-2" })
+        </div>
+    }
+</div>
+

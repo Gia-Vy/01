@@ -1,0 +1,249 @@
+﻿@model  IEnumerable<Phone_web.Models.Order>
+
+
+@{
+    ViewBag.Title = "lichsudonhang";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+
+<h2 class="text-center mt-4">🛒 LỊCH S MUA HÀNG</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-info text-center mt-4">
+        Bạn chưa có đơn hàng nào.
+    </div>
+}
+else
+{
+    <table class="table table-bordered mt-4">
+        <thead class="table-light">
+            <tr>
+                <th>Mã Đơn</th>
+                <th>Sản phẩm</th>
+
+                <th>Phương thức thanh toán </th>
+
+                <th>Trạng thái</th>
+                <th>Ngày đặt</th>
+                <th>Tổng tiền</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.OrderID</td>
+                    <td>
+                        <table>
+                            <tbody>
+                                @foreach (var item in order.OrderDetails)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="@Url.Content(item.ProductDetail.Product.ProImage)" width="120" height="120" />
+                                        </td>
+                                        <td>
+                                            @item.ProductDetail.Product.ProName
+                                        </td>
+
+                                        <td>@item.ProductDetail.Color.ColorName</td>
+                                        <td>@item.ProductDetail.DungLuong.DungLuongName</td>
+                                        <td>@item.Quantity</td>
+                                        <td>@String.Format("{0:#,##0}₫", item.UnitPrice)</td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </td>
+
+
+
+
+                    <td>@order.PaymentMethod</td>
+                    <td>@order.OrderStatus</td>
+                    <td>@order.OrderDate</td>
+
+                    <td>@String.Format("{0:#,##0}₫", order.TotalValue)</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<style>
+    /* ===== TIÊU ĐỀ LỊCH SỬ ĐƠN HÀNG KIỂU APPLE ===== */
+    h2.text-center.mt-4 {
+        font-size: 32px;
+        font-weight: 700;
+        text-align: center;
+        background: #ffffff;
+        padding: 20px 0;
+        color: #1d1d1f;
+        letter-spacing: 0.5px;
+        /* Hiệu ứng Apple nhẹ */
+        text-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 16px;
+    }
+
+   /* Font Apple Style */
+@@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body, table, h2, td, th, div, span {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1d1d1f;
+    letter-spacing: 0.2px;
+}
+
+/* ======== BẢNG CHÍNH KIỂU APPLE ======== */
+.table-bordered {
+    width: 100%;
+    margin: 25px auto;
+    max-width: 1200px;
+
+    border: 1px solid #e4e4e7 !important;
+    border-radius: 18px;
+    overflow: hidden;
+
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.06),
+                0 2px 6px rgba(0,0,0,0.04);
+}
+
+.table-light th {
+    background-color: #d7d7d7 ;
+    font-weight: 600;
+    font-size: 17px;
+    padding: 16px 14px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* ô dữ liệu */
+     .table th{
+         font-size:15px;
+         font-weight:800;
+    }
+    .table td {
+        padding: 16px 14px;
+        font-size: 14px;
+        border-top: 1px solid #f0f0f0;
+    }
+
+/* Hover nhẹ kiểu Apple */
+.table tbody tr:hover {
+    background-color: #f9f9fb;
+    transition: 0.25s ease;
+}
+
+/* ======== BẢNG SẢN PHẨM BÊN TRONG ======== */
+td table {
+    width: 100%;
+    background: #fafafa;
+    border: 1px solid #e4e4e7;
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 0 auto;
+
+    box-shadow: 0 8px 22px rgba(0,0,0,0.04);
+}
+
+td table td {
+    padding: 12px 10px;
+    font-size: 13px;
+}
+
+/* Tạo vệt phân tầng kiểu Apple */
+td table tr:nth-child(even) {
+    background-color: #f2f2f7;
+}
+
+/* ======== HÌNH ẢNH SẢN PHẨM – NỔI BẬT NHẤT ======== */
+td img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+
+    border-radius: 20px;
+
+    /* Apple-style shadow: mềm + sâu + sáng */
+    box-shadow:
+        0 12px 24px rgba(0,0,0,0.12),
+        0 4px 8px rgba(0,0,0,0.08),
+        inset 0 0 0 1px rgba(255,255,255,0.4);
+
+    background-color: #fff;
+    transition: 0.25s ease;
+}
+
+/* Tăng độ nổi khi hover ảnh */
+td img:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 16px 32px rgba(0,0,0,0.14),
+        0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* ======== BADGE TRẠNG THÁI ======== */
+.badge-status {
+    padding: 6px 16px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.badge-complete { background-color: #34c759; }
+.badge-pending  { background-color: #ffcc00; }
+.badge-cancel   { background-color: #ff3b30; }
+
+/* ======== TIÊU ĐỀ ======== */
+h2.text-center {
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+@@media (max-width: 1024px) {
+    .giohang-container {
+        padding: 20px;
+    }
+    .tieu-de {
+        font-size: 40px;
+    }
+    .bang th, .bang td, .bang-sanpham td {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+@@media (max-width: 768px) {
+    .giohang-container {
+        padding: 15px;
+    }
+    .tieu-de {
+        font-size: 32px;
+    }
+    .bang th, .bang td, .bang-sanpham td {
+        font-size: 14px;
+        padding: 10px;
+    }
+    .bang-sanpham img, .bang td img {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+
+
+</style>
+
+

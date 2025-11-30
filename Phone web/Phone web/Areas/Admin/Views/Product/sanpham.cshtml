@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Phone_web.Models.Product>
+
+@{
+    ViewBag.Title = "sanpham";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+
+<div class="container">
+    <h2 class="title text-center  title"> DANH SÁCH SẢN PHẨM</h2>
+    @using (Html.BeginForm("sanpham", "Product", FormMethod.Get, new { area = "Admin" }))
+    {
+        <div class="row mb-4 justify-content-center">
+            <div class="col-md-5">@*là cho thanh tìm với cục tìm nằm trên 1 dòng*@
+                
+                <div class="d-flex">
+                    <input type="text" class="form-control me-2" name="search" placeholder="Nhập tên sản phẩm cần tìm..."
+                           value="@Request.QueryString["search"]" />
+                    <button typse="submit" class="btn btn-primary px-4">🔍 Tìm kiếm</button>
+                </div>
+            </div>
+        </div>
+
+    }
+
+    <table class="table table-bordered table-hover align-middle">
+
+        <thead class="table" style="background-color: #e7f1ff; ">
+            <tr class="text-center">
+
+
+                <th>Dòng sản phẩm</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Mô tả</th>
+                <th>Hình ảnh </th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var pro in Model)
+            {
+                <tr>
+                    <td class="text-center fw-semibold">@pro.Category.CatName</td>
+                    <td class="text-center fw-semibold">@pro.ProName</td>
+                    <td class="text-center">@pro.ProDescription</td>
+                    <td>
+                        <img src="@Url.Content(pro.ProImage)" width="120" height="120" />
+
+
+                    </td>
+
+
+                    <td class="text-center">
+                        @Html.ActionLink("✏️ Sửa", "Suasanpham", "Product", new { id = pro.ProID, area = "Admin" }, new { @class = "btn btn-warning btn-sm mx-1" })
+                        @Html.ActionLink("🗑️ Xóa", "Xoasanpham", "Product", new { id = pro.ProID, area = "Admin" }, new { @class = "btn btn-danger btn-sm mx-1" })
+                        @Html.ActionLink("🔍 Chi tiết", "Chitietsanpham", "Product", new { id = pro.ProID, area = "Admin" }, new { @class = "btn btn-info btn-sm mx-1" })
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+    <div class="text-end mt-3">
+        @Html.ActionLink("➕ Thêm mới", "Themsanpham", "Product", null, new { @class = "btn btn-dark text-white  fw-bold" })
+
+    </div>
+
+</div>
+<script>
+    document.getElementById("ImagePath").addEventListener("change", function (event) {
+        const [file] = event.target.files;
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById("imgPreview").src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+     
+</script>
+
+
+
+

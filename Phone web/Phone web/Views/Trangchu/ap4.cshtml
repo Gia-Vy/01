@@ -1,0 +1,186 @@
+﻿
+@{
+    ViewBag.Title = "ap4";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+
+<div class="sanpham">
+    <img id="product-img" src="" alt="Sản phẩm" width="500" />
+
+    <div class="sp-detail">
+        <h1>AIRPODS</h1>
+        <div>
+            <p class="price">3.450.000đ</p>
+            <b>Màu sắc:</b>
+            <div id="khung-chon-mau"></div>
+        </div>
+        <div>
+            <p style="margin-bottom:10px"> <b>Dung lượng:</b></p>
+            <div id="khung-chon-gb"></div>
+        </div>
+
+        <div class="uudai">
+            <h2 class="uudai-title"><i class="fa-solid fa-gift"></i> Ưu đãi</h2>
+            <p class="uudai-note">
+                (Khuyến mãi dự kiến áp dụng đến <b>23h59 | 31/10/2025</b>)
+            </p>
+
+            <div class="uudai-box">
+                <h3>I. Ưu đãi thanh toán</h3>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i> Ưu đãi Mở thẻ tín dụng HSBC hoàn tiền đến <b>2 triệu</b></li>
+                    <li><i class="fa-solid fa-circle-check"></i> Ưu đãi qua cổng thanh toán và thẻ tín dụng đến <b>4.000.000đ</b></li>
+                    <li><i class="fa-solid fa-circle-check"></i> Hỗ trợ trả góp 0% lãi suất, 0đ phí chuyển đổi, 0đ bảo hiểm</li>
+                </ul>
+
+                <h3>II. Ưu đãi mua kèm</h3>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i> Ốp chính hãng Apple giảm <b>200.000đ</b></li>
+                    <li><i class="fa-solid fa-circle-check"></i> Mua combo phụ kiện chính hãng giảm <b>300.000đ</b></li>
+                    <li><i class="fa-solid fa-circle-check"></i> Tai nghe mua kèm giảm đến <b>1.000.000đ</b></li>
+                    <li><i class="fa-solid fa-circle-check"></i> Giảm đến 40% khi mua các gói bảo hành</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Mua kèm phụ kiện giảm <b>3.000.000đ</b></li>
+                </ul>
+
+                <h3>III. Ưu đãi khác</h3>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i> Thu cũ lên đời tặng Voucher đến <b>4 triệu</b></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="soluong">
+            <button id="minus"><i class="fa-solid fa-minus"></i></button>
+            <input id="qty" type="number" value="1" min="1" readonly />
+            <button id="plus"><i class="fa-solid fa-plus"></i></button>
+        </div>
+
+        <p style="font-size:25px"><b>Tạm tính:</b> <span id="total"></span></p>
+        <button class="btn" id="add-cart"><b>THÊM VÀO GIỎ HÀNG</b></button>
+
+    </div>
+    <div class="sp-dexuat">
+        <p class="chu-spdexuat">SẢN PHẨM ĐỀ XUẤT </p>
+        <div class="page">
+            <div class="in">
+                <a href="ipair">
+                    <img src="~/hinh/air4.jpg" class="fm-in" />
+                    <br />
+                    <p class="body-text">Iphone Air <br /> 30.590.000đ</p>
+                </a>
+            </div>
+
+            <div class="in">
+                <a href="ap4">
+                    <img src="~/hinh/ap2.jpg" class="fm-in" /> <br />
+                    <p class="body-text">AirPods<br /> 3.450.000đ</p>
+                </a>
+            </div>
+            <div class="in">
+                <a href="macair">
+                    <img src="~/hinh/mac.18.1.jpg" class="fm-in" /> <br />
+                    <p class="body-text">MacBook Air<br /> 25.780.000đ</p>
+                </a>
+            </div>
+            <div class="in">
+                <img src="~/hinh/16.1.jpg" class="fm-in" /> <br />
+                <p class="body-text">Iphone 16 Plus<br /> 24.480.000đ</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    const product = {
+        name: "AirPods",
+        price: 3450000,
+        mauSacList: [
+            { name: "AirPods ", img:"/hinh/ap2.jpg" },
+          
+        ]
+    };
+
+    const imgMain = document.getElementById("product-img");
+    const khungChonMau = document.getElementById("khung-chon-mau");
+    const qtyInput = document.getElementById("qty");
+    const totalSpan = document.getElementById("total");
+    const btnMinus = document.getElementById("minus");
+    const btnPlus = document.getElementById("plus");
+    const btnAddCart = document.getElementById("add-cart");
+
+
+    let mauDangChon = product.mauSacList[0];
+    let qty = 1;
+
+    function renderMauSac() {
+        khungChonMau.innerHTML = "";
+        product.mauSacList.forEach((mau, i) => {
+            const label = document.createElement("label");
+            label.className = "nhan-mau";
+            label.textContent = mau.name;
+
+            if (mau.name === mauDangChon.name) label.classList.add("active");
+
+            label.onclick = () => {
+                mauDangChon = mau;
+                imgMain.src = mau.img;
+                document.querySelectorAll(".nhan-mau").forEach(l => l.classList.remove("active"));
+                label.classList.add("active");
+            };
+
+            khungChonMau.appendChild(label);
+        });
+
+        imgMain.src = mauDangChon.img;
+    }
+
+    function updateTotal() {
+        totalSpan.textContent = (qty * product.price).toLocaleString("vi-VN") + "đ";
+    }
+
+    btnPlus.onclick = () => {
+        qty++;
+        qtyInput.value = qty;
+        updateTotal();
+    };
+
+    btnMinus.onclick = () => {
+        qty--;
+        if (qty < 1) qty = 1;
+        qtyInput.value = qty;
+        updateTotal();
+    };
+
+    qtyInput.oninput = () => {
+        qty = parseInt(qtyInput.value) || 1;
+        if (qty < 1) qty = 1;
+        qtyInput.value = qty;
+        updateTotal();
+    };
+
+    btnAddCart.onclick = () => {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const existing = cart.find(i => i.name === mauDangChon.name);
+
+        if (existing) {
+            existing.qty += qty;
+        } else {
+            cart.push({
+                name: mauDangChon.name,
+                price: product.price,
+                img: mauDangChon.img,
+                qty: qty
+            });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert("🐼 Sản phẩm đã được thêm vào giỏ hàng!");
+    };
+
+    // Khởi tạo giao diện
+    renderMauSac();
+    updateTotal();
+
+</script>

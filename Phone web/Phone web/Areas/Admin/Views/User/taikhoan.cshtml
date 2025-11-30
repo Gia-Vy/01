@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Phone_web.Models.User>
+
+@{
+    ViewBag.Title = "taikhoan";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+
+
+<div class="container">
+    <h2 class="title text-center  title"> Quản Lí Tài Khoản</h2>
+
+    <table class="table table-bordered table-hover align-middle">
+        <thead class="table" style="background-color: #e7f1ff; ">
+            <tr>
+              
+                <th>Tên người dùng</th>
+
+                <th>Mật khẩu </th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Ngày tạo</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var user in Model)
+            {
+
+                <tr>
+                  
+                    <td>@user.UserName</td>
+                    <td>@user.Password</td>
+
+                    <td>@user.Email</td>
+                    <td>@user.Role</td>
+                    <td>@user.CreateDate</td>
+                    
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+

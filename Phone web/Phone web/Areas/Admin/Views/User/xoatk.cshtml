@@ -1,0 +1,50 @@
+﻿@model Phone_web.Models.User
+
+@{
+    ViewBag.Title = "xoatk";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-4">
+
+    <h2 class="title text-center">📝 Xóa Tài Khoản</h2>
+
+    @using (Html.BeginForm("xoatk", "User", new { area = "Admin" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+
+        @Html.AntiForgeryToken()
+
+        <table class="table table-bordered align-middle mt-4">
+
+
+            <tr>
+                <th>UserName</th>
+                <td>@Html.EditorFor(m => m.UserName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>@Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>@Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+            </tr>
+            <tr>
+                <th>Role</th>
+                <td>@Html.EditorFor(m => m.Role, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+            </tr>
+
+
+        </table>
+
+        <div class="text-center mt-4">
+            <input type="submit" value="🗑️ Xóa" class="btn btn-danger fw-bold mx-2" />
+            @Html.ActionLink("⬅️ Quay về ", "taikhoan", null, new { @class = "btn btn-info text-dark fw-bold mx-2" })
+        </div>
+    }
+</div>
+

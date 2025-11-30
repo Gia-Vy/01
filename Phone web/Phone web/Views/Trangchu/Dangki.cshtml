@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký tài khoản</title>
+    <style>      
+        .register-container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 350px;
+            text-align: center;
+            margin: 40px  auto;
+            max-width: 1200px;
+       
+        }
+            .register-container h2 {
+                color: #2a5bd7;
+                font-size:35px;
+            }
+            .register-container input {
+                width: 90%;
+                padding: 15px;
+                margin: 8px 0;
+                border-radius: 10px;
+                border: 1px solid #ccc;
+            }
+            .register-container button {
+                width: 92%;
+                padding: 12px;
+                background: #2a5bd7;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                font-size: 16px;
+                margin:12px 0;
+            }
+                .register-container button:hover {
+                    background: #204aaf;
+                }
+            .register-container a {
+                color: #2a5bd7;
+                text-decoration: none;
+            }
+        .banner, marquee {
+            display: none;
+        }
+    </style>
+</head>
+<body class="register-page">
+    <div class="register-container">
+        <h2>Đăng ký</h2>
+        <form id="registerForm">
+            <input type="text" id="username" placeholder="Tên đăng nhập" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Mật khẩu" required>
+            <button type="submit">Đăng ký</button>
+        </form>
+        <p>Đã có tài khoản? <a href="/TrangChu/DangNhap">Đăng nhập</a></p>
+    </div>
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Lấy thông tin người dùng
+            const username = document.getElementById("username").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (!username || !email || !password) {
+                alert("Vui lòng điền đầy đủ thông tin!");
+                return;
+            }
+
+            // Lưu thông tin vào localStorage (giả lập database)
+            const user = { username, email, password };
+            localStorage.setItem("user", JSON.stringify(user));
+
+            // Thông báo và chuyển hướng
+            alert("Đăng ký thành công! Hãy đăng nhập để tiếp tục 💙");
+            window.location.href = "/TrangChu/DangNhap"; 
+        });
+    </script>
+
+</body>
+</html>
+
+

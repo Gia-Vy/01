@@ -1,0 +1,538 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Licorice&family=Wavefont:wght@4..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div style="background-color:midnightblue" class="grid-container">
+
+        <div class="top">
+            <!-- Trang chủ -->
+            <a href="@Url.Action("trangchuKh", "CustomerHome")" class="font-logo">Store</a>
+
+            <!-- Thanh tìm kiếm -->
+            <form method="get" action="/CustomerHome/Search"
+                  style="display:flex; align-items:center; gap:8px;">
+
+
+                <button type="submit"
+                        style="padding:8px 12px; border:none; background:none; cursor:pointer;">
+                    <i class="fa-solid fa-magnifying-glass"
+                       style="color:white; font-size:22px;"></i>
+                </button>
+
+                <input type="text" name="keyword"
+                       placeholder="Tìm kiếm sản phẩm..."
+                       class="form-control"
+                       style="width:450px; border-radius:8px; padding:8px 12px;" />
+
+            </form>
+            <!-- Các nút -->
+            <div class="nut">
+
+                <!-- Giỏ hàng -->
+                <div class="fm-nut">
+                    <a href="@Url.Action("Giohang","Cart")" style="text-decoration:none">
+                        <i class="fa-solid fa-cart-shopping" style="color:aliceblue"></i>
+                        <span class="nut-text">Giỏ hàng</span>
+                        @{
+                            var cart = Session["Cart"] as List<Phone_web.Models.Giohang>;
+                            var cartCount = cart != null ? cart.Sum(x => x.quantity) : 0;
+                        }
+                    </a>
+                    @if (cartCount >= 0)
+                    {
+                        <span class="dem-giohang">
+                            @cartCount
+                        </span>
+                    }
+                </div>
+
+                <!-- Tài khoản -->
+                <div class="fm-nut">
+                    <div class="user-menu">
+                        <a href="@Url.Action("ProfileKH","Users")" style="text-decoration:none;">
+                            <i class="fa-solid fa-user" style="color:aliceblue"></i>
+                            <span class="nut-text">Tài khoản</span>
+                        </a>
+
+                        <div class="dropdown-taikhoan">
+                            <a href="@Url.Action("Login","Users")">Đăng nhập</a>
+                            <a href="@Url.Action("Register","Users")">Đăng ký</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div>
+
+        </div>
+        <!-- Menu dưới -->
+        <ul class="nav">
+      
+
+            @if (ViewBag.Categories != null)
+            {
+                foreach (var cate in ViewBag.Categories as List<Phone_web.Models.Category>)
+                {
+                    <li>
+                        <a href="@Url.Action("Category", "CustomerHome", new { id = cate.CatID })">
+
+                            @cate.CatName
+                        </a>
+                    </li>
+                }
+            }
+        </ul>
+
+    </div>
+
+    <!-- Nội dung trang con -->
+    <div>
+        @RenderBody()
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-content">
+        <div class="footer">
+
+            <div class="address">
+                <address class="address">
+                    <b style="font-size:30px">Địa chỉ & Liên lạc</b><br />
+                    <p>
+                        <b>Số điện thoại:</b>121212<br />
+                        <b>Website:</b>store.edu.vn<br />
+                        <b>Địa chỉ:</b> 245 Nguyễn Thị Minh Khai, Phường Nguyễn Cư Trinh, Quận1<br />
+                    </p>
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.306893318852!2d106.680700073565!3d10.766798989381368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f18c72dc959%3A0xc80e37c8d1b72fbd!2zMjQ1IE5ndXnhu4VuIFRo4buLIE1pbmggS2hhaSwgUGjGsOG7nW5nIE5ndXnhu4VuIEPGsCBUcmluaCwgUXXhuq1uIDEsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e1!3m2!1svi!2s!4v1759990687831!5m2!1svi!2s"
+                            width="380" height="150" style="border:0;"
+                            allowfullscreen="" loading="lazy"></iframe>
+                </address>
+            </div>
+
+            <div class="footer2">
+                <b style="font-size:30px">Thông tin</b><br />
+                <p class="fm-f2">
+                    Giới thiệu<br />
+                    Phương thức thanh toán<br />
+                    Bảo hành & sửa <br />
+                    Check IMEI<br />
+                    Tuyển dụng<br />
+                    Tra cứu hóa đơn điện tử<br />
+                    Đánh giá<br />
+                </p>
+            </div>
+
+            <div class="footer2">
+                <b style="font-size:30px">Chính sách</b><br />
+                <p class="fm-f2">
+                    Thu cũ đổi mới<br />
+                    Thanh toán<br />
+                    Hủy giao dịch<br />
+                    Giao hàng<br />
+                    Bảo hành<br />
+                    Dịch vụ<br />
+                    Bảo mật thông tin<br />
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart script -->
+    <script>
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById("cart-count").textContent = totalItems;
+        }
+
+        window.addEventListener("DOMContentLoaded", updateCartCount);
+    </script>
+
+</body>
+</html>
+
+<style>
+
+     .nav {
+         display: flex;
+         justify-content: center;
+         flex-wrap: wrap;
+         list-style: none;
+         padding: 0;
+         margin: 20px 0;
+         gap: 30px;
+     }
+
+     /* Menu item */
+     /* ===== MENU KHỚP MÀU XANH HEADER ===== */
+     .nav {
+         display: flex;
+         justify-content: center;
+         gap: 40px; /* khoảng cách đều và đẹp */
+         list-style: none;
+         padding: 12px 0;
+         margin: 0;
+         background-color: midnightblue; /* === màu giống header === */
+     }
+
+         /* Item */
+         .nav li a {
+             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+             font-size: 17px;
+             font-weight: 500;
+             color: #f5f5f5; /* chữ màu sáng dễ nhìn */
+             text-decoration: none;
+             padding: 6px 4px;
+             letter-spacing: 0.3px;
+             transition: 0.25s ease;
+         }
+
+             /* Hover */
+             .nav li a:hover {
+                 color: #ffd700; /* vàng nhẹ – nổi nhưng không lố */
+                 transform: translateY(-1px);
+             }
+
+     /* Mobile */
+     @@media (max-width: 480px) {
+         .nav {
+             gap: 18px;
+             flex-wrap: wrap;
+         }
+
+             .nav li a {
+                 font-size: 15px;
+             }
+     }
+
+
+
+     /* Link trong menu */
+     .nav li a {
+         display: inline-block;
+         padding: 8px 0; /* chỉ padding trên/dưới, bỏ left/right để gọn */
+         text-decoration: none;
+         color: #fff; /* màu chữ menu, đổi theo màu header */
+         font-weight: bold;
+         transition: color 0.3s;
+         border: none; /* bỏ viền */
+         background: none; /* bỏ nền */
+     }
+
+         /* Hover đổi màu nhẹ */
+         .nav li a:hover {
+             color: #ffd700; /* ví dụ màu vàng khi hover */
+         }
+
+     /* Responsive: khi màn hình nhỏ */
+     @@media (max-width: 480px) {
+         .nav {
+             gap: 15px;
+         }
+
+             .nav li a {
+                 font-size: 14px;
+             }
+     }
+
+     .badge {
+         font-size: 0.75rem;
+         padding: 4px 6px;
+         color: red;
+     }
+     /* ============================
+    MENU CHUẨN APPLE – FULL SIZE
+    ============================ */
+     .nav {
+         width: 100%;
+         max-width: 1400px; /* Cho rộng bằng khung sản phẩm */
+         margin: 0 auto; /* Căn giữa tuyệt đối */
+         padding: 18px 0;
+         display: flex;
+         justify-content: center;
+         gap: 55px; /* Khoảng cách item lớn – nhìn sang hơn */
+
+         background-color: midnightblue;
+         list-style: none;
+         border-radius: 14px; /* Bo nhẹ nhìn cao cấp */
+     }
+
+         /* Item menu */
+         .nav li a {
+             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+             font-size: 20px; /* Chữ to hơn – chuẩn Apple */
+             font-weight: 600;
+             color: #ffffff;
+             text-decoration: none;
+             padding: 8px 6px;
+             letter-spacing: .4px;
+             transition: .25s ease;
+         }
+
+             /* Hover */
+             .nav li a:hover {
+                 color: #4da3ff; /* Xanh Apple */
+                 transform: translateY(-2px);
+             }
+
+             /* Khi click */
+             .nav li a:active {
+                 color: #0a84ff;
+             }
+
+     /* Mobile */
+     @@media (max-width: 480px) {
+         .nav {
+             flex-wrap: wrap;
+             gap: 20px;
+             padding: 12px 0;
+         }
+
+             .nav li a {
+                 font-size: 16px;
+             }
+     }
+</style>
+<style>
+
+    /* Category nằm giữa – chữ sang trọng */
+    .category-title {
+        text-align: center;
+        margin: 40px 0 20px;
+    }
+
+        .category-title a {
+            font-size: 34px;
+            font-weight: 700;
+            color: #000; /* mặc định đen */
+            text-decoration: none; /* không gạch chân */
+            font-family: "Poppins", sans-serif;
+            letter-spacing: 0.8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15); /* đổ bóng nhẹ */
+            transition: 0.2s ease;
+        }
+
+            /* Hover chỉ nổi nhẹ, KHÔNG đổi màu */
+            .category-title a:hover {
+                transform: translateY(-2px);
+                text-shadow: 0 3px 6px rgba(0,0,0,0.25);
+            }
+
+            /* Khi ấn vào mới đổi màu xanh */
+            .category-title a:active,
+            .category-title a:focus {
+                color: #007bff;
+            }
+
+            /* Không bị đổi màu sau khi click (visited giữ nguyên đen) */
+            .category-title a:visited {
+                color: #000;
+            }
+
+
+            /* Khi đã click (visited) vẫn xanh */
+            .category-title a:visited {
+                color: #007bff;
+            }
+
+            /* Khi focus vào (ví dụ tab bàn phím) vẫn xanh */
+            .category-title a:focus {
+                color: #007bff;
+            }
+
+
+    /* Container sản phẩm */
+    .body {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    /* Item sản phẩm */
+    .in {
+        flex: 0 0 calc(25% - 20px); /* 4 sản phẩm / hàng */
+        background: #ffffff;
+        border-radius: 16px; /* bo tròn mềm mại */
+        padding: 16px;
+        /* Đổ bóng nhẹ kiểu Apple */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e5e5e5; /* viền nhạt tinh tế */
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.25s ease; /* hiệu ứng hover */
+    }
+
+        /* Hover sang trọng */
+        .in:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+
+        /* Ảnh sản phẩm */
+        .in img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain; /* không bị méo ảnh */
+
+            background: #f8f8f8; /* nền xám nhạt sang kiểu Apple */
+            padding: 14px; /* tạo không gian thoáng cho ảnh */
+            border-radius: 14px; /* ảnh bo nhẹ */
+
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06), 0 6px 14px rgba(0,0,0,0.08); /* bóng 2 lớp mềm mại */
+
+            transition: 0.3s ease;
+        }
+
+        /* Hiệu ứng hover tinh tế */
+        .in:hover img {
+            transform: scale(1.06); /* lớn nhẹ khi hover */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.10), 0 10px 25px rgba(0,0,0,0.12); /* bóng mạnh hơn chút */
+        }
+
+
+
+    /* Tên sản phẩm */
+
+    .body-text {
+        margin-top: 12px;
+        font-size: 18px;
+        font-family: 'SF Pro Display', sans-serif;
+        font-weight: 600;
+        color: #1d1d1f;
+        letter-spacing: 0.2px;
+        line-height: 1.35;
+        transition: .25s;
+    }
+
+    .in:hover .body-text {
+        color: #0071e3;
+    }
+
+
+    /* Giá sản phẩm */
+    .price {
+        display: inline-block;
+        color: #e74c3c;
+        font-weight: bold;
+        font-size: 16px;
+        margin-top: 5px;
+        background-color: #fdecea;
+        padding: 4px 10px;
+    }
+
+        .price:hover {
+            transform: scale(1.05);
+        }
+
+    /* Nút xem tất cả */
+    .view-all {
+        display: inline-block;
+        font-size: 24px; /* chữ lớn hơn nữa */
+        color: #fff;
+        background-color: #3498db;
+        padding: 14px 36px; /* nút to rõ ràng */
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        transition: 0.3s;
+    }
+
+        .view-all:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .view-all:hover {
+            background-color: #2980b9;
+        }
+
+    /* Responsive */
+    @@media (max-width: 1200px) {
+        .in {
+            flex: 0 0 calc(33.33% - 20px);
+        }
+        /* 3 sản phẩm / hàng */
+    }
+
+    @@media (max-width: 768px) {
+        .in {
+            flex: 0 0 calc(50% - 20px);
+        }
+        /* 2 sản phẩm / hàng */
+    }
+
+    @@media (max-width: 480px) {
+        .in {
+            flex: 0 0 100%;
+        }
+            /* 1 sản phẩm / hàng */
+            .in img {
+                width: 100%;
+                height: auto;
+            }
+    }
+
+    * {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Poppins", "Roboto", sans-serif !important;
+        letter-spacing: 0.2px;
+    }
+    .font-logo {
+        font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+        font-size: 40px; /* chữ to và dễ nhìn */
+        font-weight: 700; /* đậm vừa, kiểu Apple */
+        color: #ffffff; /* màu trắng */
+        letter-spacing: 0.5px; /* spacing nhẹ kiểu Apple */
+        text-decoration: none;
+        display: flex;
+        align-items: center; /* canh giữa theo chiều dọc */
+
+        padding: 0 10px; /* tạo khoảng thở như trong ảnh */
+        height: 70px; /* đồng bộ chiều cao với thanh header */
+
+        transition: all 0.25s ease;
+    }
+
+        /* Hover của Apple: đổi sang xanh nhẹ + nhích lên 1px */
+        .font-logo:hover {
+            color: #4da3ff;
+            transform: translateY(-1px);
+        }
+    .dem-giohang {
+        color: white; /* màu chữ trắng */
+        background-color: #dc3545; /* nền đỏ nếu muốn giống badge */
+        font-weight: bold;
+        font-size: 15px; /* điều chỉnh kích thước */
+        padding:  4px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 20px;
+        height: 20px;
+        text-align: center;
+    }
+
+
+</style>

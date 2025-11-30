@@ -1,0 +1,89 @@
+﻿@model Phone_web.Models.Product
+
+@{
+    ViewBag.Title = "Themsanpham";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2> THÊM SẢN PHẨM MỚI</h2>
+@using (Html.BeginForm("Themsanpham", "Product", new { area = "Admin" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+//có 2 hàm thêm thì ghi để bít dô nào get hay post
+{
+    @Html.AntiForgeryToken()//gửi form lên mới xóa code- có nghĩa dữ liệu nhập đã dc lưu và ko còn sau khi post
+    <table class="table">
+        <tr>
+            <th>Category</th>
+            <td>
+                @Html.DropDownListFor(m => m.CatID, new SelectList(ViewBag.Categories, "CatID", "CatName"), "-- Chọn Category --",  new { @class = "form-control"  })
+
+
+
+
+            </td>
+
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.ProName)
+            </th>
+            <td>
+
+                @Html.EditorFor(m => m.ProName, new { htmlAttributes = new { @class = "form-control" } })
+
+            </td>
+        </tr>
+
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.ProDescription)
+            </th>
+            <td>
+                @Html.EditorFor(m => m.ProDescription, new { htmlAttributes = new { @class = "form-control" } })
+
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.ProImage)
+
+            </th>
+            <td>
+                <input type="file" name="ImagePath" id="ImagePath" class="form-control" />
+
+
+
+
+            </td>
+        </tr>
+
+       
+
+    </table>
+
+    <div class="text-center mt-4">
+        <input type="submit" value="Lưu" class="btn btn-danger fw-bold mx-2" />
+        @Html.ActionLink("⬅️ Quay về ", "sanpham", "Product", new { area = "Admin" }, new { @class = "btn btn-info" })
+    </div>
+}
+
+
+
+
+<script>
+    document.getElementById("ImagePath").addEventListener("change", function (event) {
+        const [file] = event.target.files;
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById("imgPreview").src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+
+
+

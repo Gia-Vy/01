@@ -1,0 +1,317 @@
+﻿@model List<Phone_web.Models.Giohang>
+
+
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+
+<div class="giohang-container">
+
+    <h1 class="tieu-de">🛒 XÁC NHẬN THANH TOÁN </h1>
+
+    @using (Html.BeginForm("thanhtoan", "Cart", FormMethod.Post))
+    {
+        <div class="bang-giohang">
+            <table class="bang">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Sản phẩm</th>
+                        <th>Màu</th>
+                        <th>Dung lượng</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                        <th>Thành tiền</th>
+                        <th>Chức năng </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><img src="@Url.Content(item.ProImage ?? "/images/no-image.png")" width="120" height="120" /></td>
+
+                            <td>@item.namePro</td>
+                            <td>@item.ColorName</td>
+                            <td>@item.DungLuongName</td>
+                            <td>@item.quantity</td>
+                            <td>@item.price.ToString("N0") ₫</td>
+                            <td>@item.total.ToString("N0") ₫</td>
+                            <td> @Html.ActionLink("Xoá", "xoagh", "Cart", new { id = item.idPro }, new { @class = "btn btn-danger btn-sm" }) </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <p class="tam-tinh"><strong>Tạm tính: @Model.Sum(x => x.total).ToString("N0") ₫</strong></p>
+        </div>
+
+        <div class="thong-tin-khachhang">
+            <p style="font-size:25px"><strong>Thông tin thanh toán</strong></p>
+            <div class="mb-2">
+                <label>Tên người nhận</label>
+                <input type="text" class="form-control" placeholder="Nhập tên người nhận..." required />
+            </div>
+            <div class="mb-2">
+                <label>Số điện thoại</label>
+                <input type="number" name="CusPhone" class="form-control" placeholder="Nhập số điện thoại" required />
+            </div>
+
+
+
+            <p style="font-size:25px"><strong>Hình thức nhận hàng </strong></p>
+            <div class="mb-2">
+                <label>Địa chỉ nhận hàng</label>
+                <input type="text" name="DCNhanHang" class="form-control" placeholder="Nhập địa chỉ nhận hàng..." required />
+            </div>
+            <div class="mb-2">
+                <label>Phương thức thanh toán</label>
+                <input type="text" class="form-control" placeholder="COD / Tiền Mặt / Đặt Cọc..." required />
+            </div>
+            <div class="mb-2">
+                <label>Mã giảm giá</label>
+                <input type="text" class="form-control" />
+            </div>
+
+            <div class="mb-2">
+                <label>Note</label>
+                <input type="text" class="form-control" />
+            </div>
+
+
+            <p style="text-align:right ;font-size:22px"><strong>Áp mã giảm giá:</strong> 0 ₫</p>
+            <p class="tam-tinh"><strong>Tổng giá trị: @Model.Sum(x => x.total).ToString("N0") ₫</strong></p>
+
+            <div class="button-row">
+                <a href="@Url.Action("Giohang","Cart")" class="btn-back">Quay lại</a>
+                <button type="submit" class="btn-pay">Thanh toán</button>
+            </div>
+
+        </div>
+    }
+</div>
+<style>
+    /* Áp font Apple cho toàn bộ phần thông tin khách hàng */
+    .thong-tin-khachhang,
+    .thong-tin-khachhang input,
+    .thong-tin-khachhang textarea,
+    .thong-tin-khachhang select,
+    .thong-tin-khachhang label,
+    .thong-tin-khachhang p {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        color: #111;
+    }
+
+        /* Đảm bảo input / select / textarea cũng dùng font */
+        .thong-tin-khachhang input,
+        .thong-tin-khachhang select,
+        .thong-tin-khachhang textarea {
+            font-family: inherit; /* kế thừa font của container */
+        }
+
+    /* ===== FONT APPLE TOÀN TRANG ===== */
+    body, html, .giohang-container, table, th, td, .thong-tin-khachhang, .form-control, .tieu-de, label, p {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        color: #111;
+    }
+
+    /* ===== Container chính ===== */
+    .giohang-container {
+        max-width: 1000px;
+        margin: 20px auto;
+        padding: 25px;
+        border-radius: 25px;
+        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        background-color: #fff;
+    }
+
+    /* ===== Tiêu đề ===== */
+    .tieu-de {
+        text-align: center;
+        font-size: 50px;
+        margin-bottom: 30px;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+    /* ===== Bảng giỏ hàng ===== */
+    .bang-giohang {
+        overflow-x: auto;
+        margin-bottom: 25px;
+    }
+
+    .bang {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: 20px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+        .bang th {
+            background-color: #f0f0f5;
+            font-weight: 700;
+            color: #00796b;
+            padding: 16px;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        .bang td {
+            border-top: 1px solid #ddd;
+            padding: 14px;
+            text-align: center;
+        }
+
+            /* Thay đổi nút Xóa trong bảng */
+            .bang td a.btn {
+                padding: 6px 12px;
+                font-size: 16px;
+                border-radius: 8px;
+            }
+
+    /* Tạm tính / Tổng tiền */
+    /* Tạm tính góc phải, nền xám nhạt, chữ nhỏ */
+    .tam-tinh {
+        text-align: right;
+        font-size: 20px; /* chữ nhỏ hơn */
+        font-weight: 600; /* hơi đậm để dễ thấy */
+        color: #111; /* chữ màu tối */
+        background-color: #f0f0f0; /* nền xám nhạt */
+        padding: 8px 12px; /* khoảng cách vừa phải */
+        border-radius: 10px; /* bo góc nhẹ */
+        display: inline-block; /* vừa khít nội dung */
+        float: right; /* nằm góc phải */
+        margin-top: 10px; /* cách các phần trên */
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    }
+
+
+    /* ===== Form thông tin khách hàng ===== */
+    .thong-tin-khachhang {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 25px;
+        border-radius: 15px;
+        background-color: #f8f8f8;
+    }
+
+        .thong-tin-khachhang p {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 14px;
+        font-size: 18px;
+        border-radius: 10px;
+        border: 1px solid #bbb;
+        transition: 0.3s;
+    }
+
+    /* Nút Quay lại + Thanh toán */
+    .button-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 25px;
+        gap: 20px;
+    }
+
+    .btn-back,
+    .btn-pay {
+        flex: 1;
+        text-align: center;
+        padding: 14px 0;
+        font-size: 20px;
+        font-weight: 600;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+        transition: 0.25s;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .btn-back {
+        background-color: #0a82ff;
+    }
+
+        .btn-back:hover {
+            background-color: #005ad6;
+            transform: translateY(-2px);
+        }
+
+    .btn-pay {
+        background-color: #0066ff;
+    }
+
+        .btn-pay:hover {
+            background-color: #0047b3;
+            transform: translateY(-2px);
+        }
+
+    /* ===== Responsive ===== */
+    @@media (max-width: 1024px) {
+        .giohang-container {
+            padding: 20px;
+        }
+
+        .tieu-de {
+            font-size: 40px;
+        }
+
+        .bang th, .bang td {
+            padding: 12px;
+            font-size: 18px;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .giohang-container {
+            padding: 15px;
+        }
+
+        .tieu-de {
+            font-size: 32px;
+        }
+
+        .bang th, .bang td {
+            font-size: 16px;
+            padding: 10px;
+        }
+
+        .thong-tin-khachhang {
+            padding: 15px;
+        }
+
+        .form-control {
+            font-size: 16px;
+            padding: 12px;
+        }
+    }
+</style>
+<style>
+    /* ... CSS cũ của bạn ... */
+
+    /* ================= FONT APPLE TOÀN TRANG (override Bootstrap nếu có) ================= */
+    .giohang-container,
+    .giohang-container * {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+        color: #111 !important;
+    }
+
+        .giohang-container input,
+        .giohang-container select,
+        .giohang-container textarea {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+        }
+</style>

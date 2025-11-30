@@ -1,0 +1,66 @@
+﻿@model Phone_web.Models.Product
+
+@{
+    ViewBag.Title = "Chitietsanpham";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-4">
+
+    <h2 class="title text-center ">Chi tiết sản phẩm</h2>
+
+    @using (Html.BeginForm("Chitietsanpham", "Product", new { area = "Admin" }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <table class="table table-bordered align-middle mt-4">
+
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.ProName)</th>
+                <td>
+                    @Html.EditorFor(m => m.ProName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.Category.CatName)</th>
+                <td>
+                    @Html.EditorFor(m => m.Category.CatName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.ProDescription)</th>
+                <td>
+                    @Html.EditorFor(m => m.ProDescription, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.ProImage)</th>
+                <td>
+                    <img src="@Model.ProImage" width="150" height="150" />
+
+                </td>
+            </tr>
+        </table>
+
+        <div class="text-center mt-4">
+
+            @Html.ActionLink("⬅️ Quay về","sanpham", "Product", new { area = "Admin" }, new { @class = "btn btn-info text-dark fw-bold mx-2" })
+        </div>
+    }
+</div>
+
+<script>
+    document.getElementById("ImagePath").addEventListener("change", function(event) {
+        const [file] = event.target.files;
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById("imgPreview").src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+

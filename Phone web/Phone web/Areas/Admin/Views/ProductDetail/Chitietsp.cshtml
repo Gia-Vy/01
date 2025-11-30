@@ -1,0 +1,78 @@
+﻿@model Phone_web.Models.ProductDetail
+
+@{
+    ViewBag.Title = "Chitietsp";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-4">
+
+    <h2 class="title text-center text-danger">Chi Tiết Sản Phẩm</h2>
+
+    @using (Html.BeginForm("Chitietsp", "ProductDetail", new { area = "Admin" }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <table class="table table-bordered align-middle mt-4">
+
+
+            <tr>
+                <th>Tên sản phẩm</th>
+                <td>
+                    @Html.EditorFor(m => m.Product.ProName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>Màu sắc</th>
+                <td>
+                    @Html.EditorFor(m => m.Color.ColorName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>Màu sắc</th>
+                <td>
+                    @Html.EditorFor(m => m.DungLuong.DungLuongName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>Giá</th>
+                <td>
+                    @Html.EditorFor(m => m.Price, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Còn lại
+                </th>
+                <td>
+                    @Html.EditorFor(m => m.RemainQuantity, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Đã bán
+                </th>
+                <td>
+                    @Html.EditorFor(m => m.SoldQuantity, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </td>
+            </tr>
+
+
+
+
+        </table>
+
+        <div class="text-center mt-4">
+
+            @Html.ActionLink("⬅️ Quay về ", "khohang", null, new { @class = "btn btn-info text-dark fw-bold mx-2" })
+        </div>
+    }
+</div>
+
+
+
